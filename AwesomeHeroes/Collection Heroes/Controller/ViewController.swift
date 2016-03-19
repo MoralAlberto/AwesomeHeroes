@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        API.characters().startWithNext { characters in
+            print("Characters \(characters)")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
