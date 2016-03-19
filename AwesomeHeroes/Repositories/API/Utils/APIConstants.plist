@@ -8,8 +8,8 @@
 	<dict>
 		<key>APIPathCharacters</key>
 		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;limit=%@&amp;offset=%@</string>
-		<key>APIPathCharacter</key>
-		<string>v1/public/characters/%@&amp;ts=%@&amp;apikey=%@&amp;hash=%@</string>
+		<key>APIPathCharactersWithName</key>
+		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;nameStartsWith=%@&amp;limit=100</string>
 	</dict>
 </dict>
 </plist>

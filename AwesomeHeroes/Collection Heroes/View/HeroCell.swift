@@ -17,6 +17,10 @@ class HeroCell: UICollectionViewCell {
     @IBOutlet weak var nameHero: UILabel!
     
     var viewModel = HeroCellViewModel()
+    static var cellId: String {
+        return "HeroCell"
+    }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

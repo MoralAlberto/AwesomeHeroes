@@ -58,6 +58,7 @@ class HeroesLayout: UICollectionViewLayout {
     
     override func prepareLayout() {
         if cache.isEmpty {
+            contentHeight = 0
             let columnWidth = width / CGFloat(numberOfColumns)
             
             var xOffsets = [CGFloat]()

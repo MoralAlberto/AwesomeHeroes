@@ -12,7 +12,11 @@ import ReactiveCocoa
 class HeroesCollectionViewModel: NSObject {
     
     var arrayCharacters: [CharacterModel]?
-    var pageSize: UInt = 0
+    var searchCharacters: [CharacterModel]?
+    
+    var searching: Bool = false
+    
+    var pageSize: UInt = 20
     var offset: UInt = 0
     var canGetMoreHeroes: Bool = true
     
@@ -20,16 +24,15 @@ class HeroesCollectionViewModel: NSObject {
     
 
     func marvelCharacter() {
-        pageSize = 10
+        pageSize = 20
         canGetMoreHeroes = false
         
         API.characters(pageSize, offset: offset)
             .throttle(3.0, onScheduler: QueueScheduler.mainQueueScheduler)
             .on { x in
-                print("Al final")
+                print("")
             }
             .startWithNext { characters in
-            print("Characters \(characters)")
         
             if ((self.arrayCharacters?.isEmpty) != nil) {
                 for hero in (characters.data?.results)! {
@@ -45,16 +48,25 @@ class HeroesCollectionViewModel: NSObject {
         }
     }
     
-//    func canLoadMoreHeroesAtIndexPath(indexPath: NSIndexPath) -> Bool {
-//        print("IndexPath: \(indexPath.item) - Heroes Count: \(arrayCharacters?.count)")
-//        return (indexPath.item == arrayCharacters!.count - 3) || (indexPath.item == arrayCharacters!.count - 1)
-//    }
+    func marvelCharacter(withName name: String) {
+        searching = true
+        
+        API.characters(withName: name)
+            .on { x in
+                print("\(name)")
+            }
+            .startWithNext { characters in
+                self.searchCharacters = characters.data?.results
+                self.canReloadUI = true
+            }
+    }
     
     func numberOfItems() -> Int {
-        if let x = self.arrayCharacters {
-            return x.count
+        if searching {
+            return (self.searchCharacters?.count > 0) ? (self.searchCharacters?.count)! : 0
         } else {
-            return 0
+            return (self.arrayCharacters?.count > 0) ? (self.arrayCharacters?.count)! : 0
+
         }
     }
 }

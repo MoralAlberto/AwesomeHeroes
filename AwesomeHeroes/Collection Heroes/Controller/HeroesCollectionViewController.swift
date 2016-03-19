@@ -73,9 +73,12 @@ extension HeroesCollectionViewController {
             .deliverOnMainThread()
             .subscribeNext { (anyObject: AnyObject!) -> Void in
                 self.collectionView?.reloadData()
+                
                 let layout = self.collectionViewLayout as! HeroesLayout
                 layout.cache = [HeroesLayoutAttributes]()
                 layout.prepareLayout()
+                
+                self.viewModel.searching = false
         }
         
         self.rac_signalForSelector("searchBar:textDidChange:", fromProtocol: UISearchBarDelegate.self)
@@ -88,11 +91,17 @@ extension HeroesCollectionViewController {
                 let searchBar = AnyObject as? RACTuple
                 let searchText = searchBar?.second as? String
                 
-                print("SEARCH: \(searchText)")
+                if searchText?.characters.count > 0 {
+                    self.viewModel.marvelCharacter(withName: searchText!)
+                } else {
+                    self.viewModel.searchCharacters = nil
+                    self.collectionView?.reloadData()
+                    
+                    let layout = self.collectionViewLayout as! HeroesLayout
+                    layout.cache = [HeroesLayoutAttributes]()
+                    layout.prepareLayout()
+                }
         }
-
-        
-        
     }
 }
 
@@ -102,8 +111,10 @@ extension HeroesCollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HeroCell", forIndexPath: indexPath) as! HeroCell
-        cell.viewModel.configureCellWith(viewModel.arrayCharacters![indexPath.row])
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HeroCell.cellId, forIndexPath: indexPath) as! HeroCell
+        
+        let heroModel = (viewModel.searchCharacters?.count > 0) ? viewModel.searchCharacters![indexPath.row] : viewModel.arrayCharacters![indexPath.row]
+        cell.viewModel.configureCellWith(heroModel)
         
         return cell
     }
@@ -111,7 +122,7 @@ extension HeroesCollectionViewController {
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         
-        if bottomEdge >= scrollView.contentSize.height && viewModel.canGetMoreHeroes {
+        if bottomEdge >= scrollView.contentSize.height && viewModel.canGetMoreHeroes && viewModel.searchCharacters?.count <= 0 {
             viewModel.marvelCharacter()
         }
     }
@@ -129,7 +140,5 @@ extension HeroesCollectionViewController: HeroesLayoutDelegate {
     }
 }
 
-extension HeroesCollectionViewController: UISearchBarDelegate {
-    
-}
+extension HeroesCollectionViewController: UISearchBarDelegate {}
 

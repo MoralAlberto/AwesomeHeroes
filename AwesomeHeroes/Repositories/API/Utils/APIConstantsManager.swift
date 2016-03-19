@@ -14,6 +14,7 @@ import Foundation
 enum APIPaths: String {
     case endPoint   = "APIEndPoint"
     case characters = "APIPaths.APIPathCharacters"
+    case charactersWithName = "APIPaths.APIPathCharactersWithName"
 }
 
 /**
@@ -45,6 +46,10 @@ struct APIConstants {
     
     static func APIPathCharacters() -> String! {
         return valueDict.valueForKeyPath(APIPaths.characters.rawValue) as! String
+    }
+    
+    static func APIPathCharacterWithName() -> String! {
+        return valueDict.valueForKeyPath(APIPaths.charactersWithName.rawValue) as! String
     }
     
 }

@@ -16,4 +16,8 @@ class API {
         return CharactersManager.characters(pageSize, offset: offset)
     }
     
+    //  Forward method to upper layers
+    static func characters(withName name: String) -> SignalProducer<CharactersModel, NSError> {
+        return CharactersManager.character(withName: name)
+    }
 }
