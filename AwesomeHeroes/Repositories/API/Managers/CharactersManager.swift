@@ -33,6 +33,10 @@ class CharactersManager {
         }
     }
     
+//    static func character(characterId: String) -> SignalProducer<CharactersModel, NSError> {
+//        
+//    }
+    
 }
 
 

@@ -21,14 +21,13 @@ class HeroCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        RACObserve(viewModel, "canReload")
+        RACObserve(viewModel, "canReloadUI")
             .ignore(false)
             .deliverOnMainThread()
             .subscribeNext { (anyObject: AnyObject!) -> Void in
                 
                 self.nameHero.text = self.viewModel.name
                 self.imageView.hnk_setImageFromURL(NSURL(string: self.viewModel.urlImage!), placeholder: nil, success: { image in
-                    print("Success")
                     self.imageView.clipsToBounds = true
                     self.imageView.image = image
                     

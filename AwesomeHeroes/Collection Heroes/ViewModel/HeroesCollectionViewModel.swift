@@ -16,7 +16,7 @@ class HeroesCollectionViewModel: NSObject {
     var offset: UInt = 0
     var canGetMoreHeroes: Bool = true
     
-    dynamic var canReload: Bool = false
+    dynamic var canReloadUI: Bool = false
     
 
     func marvelCharacter() {
@@ -40,7 +40,7 @@ class HeroesCollectionViewModel: NSObject {
             }
 
             self.offset = self.offset + self.pageSize
-            self.canReload = true
+            self.canReloadUI = true
             self.canGetMoreHeroes = true
         }
     }
