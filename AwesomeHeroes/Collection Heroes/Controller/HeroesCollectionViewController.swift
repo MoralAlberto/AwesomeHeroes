@@ -14,29 +14,39 @@ import AVFoundation
 class HeroesCollectionViewController: UICollectionViewController {
 
     var viewModel = HeroesCollectionViewModel()
-    var arrayCharacters: CharactersModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Layout Settings
         let layout = collectionViewLayout as! HeroesLayout
         layout.delegate = self
         layout.numberOfColumns = 2
         layout.cellPadding = 4
         
-//        API.characters().startWithNext { characters in
-//            print("Characters \(characters)")
-//            self.arrayCharacters = characters
-////            characters.data?.results?.count
-//            self.collectionView?.reloadData()
-//        }
-        
+        binding()
+        viewModel.marvelCharacter()
+    }
+}
+
+extension HeroesCollectionViewController {
+    func binding() {
+        RACObserve(viewModel, "canReload")
+            .ignore(nil)
+            .subscribeNext { (anyObject: AnyObject!) -> Void in
+                
+                self.collectionView?.reloadData()
+        }
     }
 }
 
 extension HeroesCollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return (self.arrayCharacters!.data?.results?.count)!
+        if let hasHeroes = self.viewModel.arrayCharacters {
+            if let numberHeroes = hasHeroes.data?.results?.count {
+                return numberHeroes
+            }
+        }
         return 20
     }
     
@@ -47,9 +57,6 @@ extension HeroesCollectionViewController {
             print("Success")
             cell.imageView.clipsToBounds = true
             cell.imageView.image = image
-
-//            let layout = self.collectionViewLayout as! HeroesLayout
-//            layout.prepareLayout()
             
             }) { error in
             print("Error")
@@ -62,15 +69,12 @@ extension HeroesCollectionViewController {
 extension HeroesCollectionViewController: HeroesLayoutDelegate {
     
     func collectionView(collectionView: UICollectionView, heighForImageAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
-        
-            let random = arc4random_uniform(4) + 1
-            return CGFloat(random * 100)
-
-
+        let random = arc4random_uniform(4) + 1
+        return CGFloat(random * 100)
     }
     
     func collectionView(collectionView: UICollectionView, heighForNameAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
-        return 60
+        return 40
     }
     
 }

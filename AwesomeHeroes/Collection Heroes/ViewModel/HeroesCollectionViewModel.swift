@@ -8,8 +8,10 @@
 
 import Foundation
 
-class HeroesCollectionViewModel {
+class HeroesCollectionViewModel: NSObject {
     
+    var arrayCharacters: CharactersModel?
+    dynamic var canReload: Bool = false
     
     func marvelCharacter() {
         API.characters().startWithNext { characters in

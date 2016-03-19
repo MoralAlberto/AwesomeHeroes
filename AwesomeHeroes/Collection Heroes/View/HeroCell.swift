@@ -14,6 +14,13 @@ class HeroCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.image = nil
+        
+    }
+    
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         super.applyLayoutAttributes(layoutAttributes)
         let attributes = layoutAttributes as! HeroesLayoutAttributes
