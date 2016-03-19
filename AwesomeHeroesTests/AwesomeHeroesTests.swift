@@ -8,6 +8,8 @@
 
 import XCTest
 @testable import AwesomeHeroes
+import Nimble
+import Quick
 
 class AwesomeHeroesTests: XCTestCase {
     

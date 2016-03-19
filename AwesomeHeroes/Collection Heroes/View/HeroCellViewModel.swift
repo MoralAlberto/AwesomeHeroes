@@ -16,7 +16,7 @@ class HeroCellViewModel: NSObject {
     dynamic var canReloadUI: Bool = false
 
     func configureCellWith(hero: CharacterModel) {
-        urlImage = (hero.thumbnail?.path)!+"/portrait_xlarge.jpg"
+        urlImage = (hero.thumbnail?.path)!+"/portrait_medium.jpg"
         name = hero.name
         
         canReloadUI = true
