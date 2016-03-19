@@ -7,7 +7,7 @@
 	<key>APIPaths</key>
 	<dict>
 		<key>APIPathCharacters</key>
-		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;limit=2</string>
+		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;limit=%@&amp;offset=%@</string>
 	</dict>
 </dict>
 </plist>

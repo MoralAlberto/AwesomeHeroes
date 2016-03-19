@@ -36,18 +36,24 @@
                                                         <constraint firstAttribute="height" constant="200" id="zxM-QZ-fED"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8T-Bf-A4q">
-                                                    <rect key="frame" x="68" y="210" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8T-Bf-A4q">
+                                                    <rect key="frame" x="0.0" y="208" width="179" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="auQ-Aw-WmL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="c8T-Bf-A4q" secondAttribute="trailing" id="1zO-Uw-bXL"/>
                                                 <constraint firstItem="RK7-3h-pqS" firstAttribute="top" secondItem="v0T-lD-5fH" secondAttribute="top" id="3xK-Qm-U1H"/>
+                                                <constraint firstItem="c8T-Bf-A4q" firstAttribute="leading" secondItem="v0T-lD-5fH" secondAttribute="leading" id="67X-PM-EjE"/>
                                                 <constraint firstAttribute="trailing" secondItem="RK7-3h-pqS" secondAttribute="trailing" id="fwm-cq-Xtm"/>
                                                 <constraint firstItem="RK7-3h-pqS" firstAttribute="leading" secondItem="v0T-lD-5fH" secondAttribute="leading" id="jcK-Sn-ddt"/>
+                                                <constraint firstAttribute="bottom" secondItem="c8T-Bf-A4q" secondAttribute="bottom" id="xMM-2J-Q8q"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -62,6 +68,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="RK7-3h-pqS" id="k9E-E9-RV5"/>
                                     <outlet property="imageViewHeightLayoutConstraint" destination="zxM-QZ-fED" id="HzW-D1-UGQ"/>
+                                    <outlet property="nameHero" destination="c8T-Bf-A4q" id="apf-K2-HsY"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

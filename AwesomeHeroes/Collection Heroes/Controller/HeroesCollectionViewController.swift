@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveCocoa
-import Haneke
 import AVFoundation
 
 class HeroesCollectionViewController: UICollectionViewController {
@@ -19,7 +18,7 @@ class HeroesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         // Layout Settings
-        let layout = collectionViewLayout as! HeroesLayout
+        let layout = self.collectionViewLayout as! HeroesLayout
         layout.delegate = self
         layout.numberOfColumns = 2
         layout.cellPadding = 4
@@ -32,37 +31,39 @@ class HeroesCollectionViewController: UICollectionViewController {
 extension HeroesCollectionViewController {
     func binding() {
         RACObserve(viewModel, "canReload")
-            .ignore(nil)
+            .ignore(false)
+            .deliverOnMainThread()
             .subscribeNext { (anyObject: AnyObject!) -> Void in
                 
+                
+
                 self.collectionView?.reloadData()
+                let layout = self.collectionViewLayout as! HeroesLayout
+                layout.cache = [HeroesLayoutAttributes]()
+                layout.prepareLayout()
+
         }
     }
 }
 
 extension HeroesCollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let hasHeroes = self.viewModel.arrayCharacters {
-            if let numberHeroes = hasHeroes.data?.results?.count {
-                return numberHeroes
-            }
-        }
-        return 20
+        return viewModel.numberOfItems()
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HeroCell", forIndexPath: indexPath) as! HeroCell
-        
-        cell.imageView.hnk_setImageFromURL(NSURL(string: "http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_xlarge.jpg"), placeholder: nil, success: { image in
-            print("Success")
-            cell.imageView.clipsToBounds = true
-            cell.imageView.image = image
-            
-            }) { error in
-            print("Error")
-        }
+        cell.viewModel.configureCellWith(viewModel.arrayCharacters![indexPath.row])
         
         return cell
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        
+        if bottomEdge >= scrollView.contentSize.height && viewModel.canGetMoreHeroes {
+            viewModel.marvelCharacter()
+        }
     }
 }
 
@@ -76,6 +77,5 @@ extension HeroesCollectionViewController: HeroesLayoutDelegate {
     func collectionView(collectionView: UICollectionView, heighForNameAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         return 40
     }
-    
 }
 

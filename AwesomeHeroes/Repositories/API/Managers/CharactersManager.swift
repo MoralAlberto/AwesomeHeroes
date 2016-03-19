@@ -11,7 +11,7 @@ import ReactiveCocoa
 
 
 class CharactersManager {
-    static func characters() -> SignalProducer<CharactersModel, NSError> {
+    static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharactersModel, NSError> {
         return SignalProducer<CharactersModel, NSError> { (observer, _) in
             
             let publicKey = Marvel.publicKey.rawValue
@@ -20,7 +20,7 @@ class CharactersManager {
             let timestamp = "\(NSDate().timeIntervalSince1970 * 1000)"
             let hash = HashMarvel.hash(timestamp, privateKey: privateKey, publicKey: publicKey)
 
-            let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacters(), "\(timestamp)", publicKey, hash)
+            let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacters(), "\(timestamp)", publicKey, hash, pageSize.description, offset.description)
 
             let url = NSURL(string: "\(urlString)")
             let request = NSMutableURLRequest(URL: url!)

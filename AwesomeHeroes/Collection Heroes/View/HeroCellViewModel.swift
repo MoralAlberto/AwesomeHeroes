@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class HeroCellViewModel: NSObject {
+    
+    var urlImage: String?
+    var name: String?
+    
+    dynamic var canReload: Bool = false
+
+
+    func configureCellWith(hero: CharacterModel) {
+        urlImage = (hero.thumbnail?.path)!+"/portrait_xlarge.jpg"
+        name = hero.name
+        
+        canReload = true
+    }
+    
+}

@@ -39,7 +39,7 @@ class HeroesLayout: UICollectionViewLayout {
     var delegate: HeroesLayoutDelegate!
     var numberOfColumns = 1
     
-    private var cache = [HeroesLayoutAttributes]()
+    internal var cache = [HeroesLayoutAttributes]()
     private var contentHeight: CGFloat = 0
     private var width: CGFloat {
         get {
