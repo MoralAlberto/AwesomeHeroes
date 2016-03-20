@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import AVFoundation
+import SVProgressHUD
 
 class HeroesCollectionViewController: UICollectionViewController {
 
@@ -25,6 +26,7 @@ class HeroesCollectionViewController: UICollectionViewController {
         layout.cellPadding = 4
         
         binding()
+        SVProgressHUD.show()
         viewModel.marvelCharacter()
     }
     
@@ -72,6 +74,9 @@ extension HeroesCollectionViewController {
             .ignore(false)
             .deliverOnMainThread()
             .subscribeNext { (anyObject: AnyObject!) -> Void in
+                
+                SVProgressHUD.dismiss()
+                
                 self.collectionView?.reloadData()
                 
                 let layout = self.collectionViewLayout as! HeroesLayout
@@ -83,7 +88,7 @@ extension HeroesCollectionViewController {
         
         self.rac_signalForSelector("searchBar:textDidChange:", fromProtocol: UISearchBarDelegate.self)
             .doNext({ (AnyObject: AnyObject!) -> Void in
-                
+                SVProgressHUD.show()
             })
             .throttle(1.0)
             .subscribeNext { (AnyObject: AnyObject!) -> Void in
@@ -94,6 +99,7 @@ extension HeroesCollectionViewController {
                 if searchText?.characters.count > 0 {
                     self.viewModel.marvelCharacter(withName: searchText!)
                 } else {
+                    SVProgressHUD.dismiss()
                     self.viewModel.searchCharacters = nil
                     self.collectionView?.reloadData()
                     
@@ -123,6 +129,7 @@ extension HeroesCollectionViewController {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         
         if bottomEdge >= scrollView.contentSize.height && viewModel.canGetMoreHeroes && viewModel.searchCharacters?.count <= 0 {
+            SVProgressHUD.show()
             viewModel.marvelCharacter()
         }
     }
