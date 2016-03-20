@@ -11,6 +11,10 @@ import ReactiveCocoa
 
 class NetworkManager {
     
+    /**
+        Instead of using Alamofire or AFNetworking, I create the request with the next function, using RAC4.
+        If the request fails, then the signal retry 2 more times, If we have a successful response, this data is send trought the signal to upper layers, in this case to CharactersManager. 
+     **/
     class func dataWithRequest(request: NSMutableURLRequest) -> SignalProducer<NSData, NSError> {
         return NSURLSession.sharedSession().rac_dataWithRequest(request)
             .retry(2)

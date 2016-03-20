@@ -19,25 +19,32 @@ class HeroesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         addSearchBarAndLeftTitleWithManualLayout()
-        // Layout Settings
+        
+        // Collection View Layout Settings
         let layout = self.collectionViewLayout as! HeroesLayout
         layout.delegate = self
+        //  Number of columns in our Layout.
         layout.numberOfColumns = 2
         layout.cellPadding = 4
         
-        binding()
         SVProgressHUD.show()
+        
+        binding()
         viewModel.marvelCharacter()
     }
     
-    func addSearchBarAndLeftTitleWithManualLayout() {
+    /**
+        Create a custom titleView in our navigation controller. With a parent UIView, with subview: UILabel and UISearchBar
+        It's all attached with manual layout. With NSLayoutAnchor, a fluent API for NSLayoutConstraint.
+     **/
+    private func addSearchBarAndLeftTitleWithManualLayout() {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.delegate = self
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Heros"
+        label.text = viewModel.titleHeroes
         
         let simpleView = UIView()
         simpleView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,10 +73,29 @@ class HeroesCollectionViewController: UICollectionViewController {
             label.centerYAnchor.constraintEqualToAnchor(searchBar.centerYAnchor)
             ])
     }
+    
+    /**
+        Reload the collection view
+     **/
+    private func reload(){
+        self.collectionView?.reloadData()
+        
+        let layout = self.collectionViewLayout as! HeroesLayout
+        layout.cache = [HeroesLayoutAttributes]()
+        layout.prepareLayout()
+    }
 }
 
 extension HeroesCollectionViewController {
-    func binding() {
+
+    /**
+        Bind the Controller with the ViewModel, then we can "listen" changes in our model and refresh our View.
+     **/
+    private func binding() {
+        /**
+            Observe canReloadUI variable within HeroesCollectionViewModel, we are observing every new update in this variable.
+            Ignore when the var has false value, and the result is delivered on the main thread.
+        **/
         RACObserve(viewModel, "canReloadUI")
             .ignore(false)
             .deliverOnMainThread()
@@ -77,15 +103,14 @@ extension HeroesCollectionViewController {
                 
                 SVProgressHUD.dismiss()
                 
-                self.collectionView?.reloadData()
-                
-                let layout = self.collectionViewLayout as! HeroesLayout
-                layout.cache = [HeroesLayoutAttributes]()
-                layout.prepareLayout()
-                
+                self.reload()
                 self.viewModel.searching = false
         }
         
+        /**
+            Observe changes at searchBar text, we want to retrieve the name of a super hero (if exist at marvel's api).
+            The text is throttled, it means that we only send the name when the user stops tapping.
+        **/
         self.rac_signalForSelector("searchBar:textDidChange:", fromProtocol: UISearchBarDelegate.self)
             .doNext({ (AnyObject: AnyObject!) -> Void in
                 SVProgressHUD.show()
@@ -101,47 +126,62 @@ extension HeroesCollectionViewController {
                 } else {
                     SVProgressHUD.dismiss()
                     self.viewModel.searchCharacters = nil
-                    self.collectionView?.reloadData()
                     
-                    let layout = self.collectionViewLayout as! HeroesLayout
-                    layout.cache = [HeroesLayoutAttributes]()
-                    layout.prepareLayout()
+                    self.reload()
                 }
         }
     }
 }
 
 extension HeroesCollectionViewController {
+    
+    /**
+        Show the correct items in a section, there are two arrays arrayHeroes and searchHeroes.
+     **/
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
     }
     
+    /**
+        Delegate method
+     **/
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(HeroCell.cellId, forIndexPath: indexPath) as! HeroCell
         
-        let heroModel = (viewModel.searchCharacters?.count > 0) ? viewModel.searchCharacters![indexPath.row] : viewModel.arrayCharacters![indexPath.row]
+        let heroModel = viewModel.heroAtIndexPath(indexPath)
         cell.viewModel.configureCellWith(heroModel)
         
         return cell
     }
     
+    /**
+        Detect when the user has scrolled to the end of the UICollectionView. Then, when he arrives at the end another REST API call is sent.
+     **/
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         
-        if bottomEdge >= scrollView.contentSize.height && viewModel.canGetMoreHeroes && viewModel.searchCharacters?.count <= 0 {
-            SVProgressHUD.show()
-            viewModel.marvelCharacter()
+        if bottomEdge >= scrollView.contentSize.height
+            && viewModel.canGetMoreHeroes
+            && viewModel.searchCharacters?.count <= 0 {
+                SVProgressHUD.show()
+                viewModel.marvelCharacter()
         }
     }
 }
 
 extension HeroesCollectionViewController: HeroesLayoutDelegate {
     
+    /**
+        Random height for hero's image.
+     **/
     func collectionView(collectionView: UICollectionView, heighForImageAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         let random = arc4random_uniform(4) + 1
         return CGFloat(random * 100)
     }
     
+    /**
+        Height for the UILabel that shows the hero's name
+     **/
     func collectionView(collectionView: UICollectionView, heighForNameAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         return 40
     }

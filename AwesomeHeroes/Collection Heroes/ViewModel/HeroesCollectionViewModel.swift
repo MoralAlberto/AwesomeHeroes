@@ -9,6 +9,9 @@
 import Foundation
 import ReactiveCocoa
 
+/**
+    Here take place the business logic, when the mdoel is changed the view model notifies the view controller to update the info showed on the screen.
+ **/
 class HeroesCollectionViewModel: NSObject {
     
     var arrayCharacters: [CharacterModel]?
@@ -22,7 +25,13 @@ class HeroesCollectionViewModel: NSObject {
     
     dynamic var canReloadUI: Bool = false
     
-
+    var titleHeroes: String {
+        return NSLocalizedString("Heroes", comment: "Heroes")
+    }
+    
+    /**
+        API Call to get heroes. The heroes ara retrived from the API and correctly parsed in a model, then are inserted inside an array and displayed on the screen.
+     **/
     func marvelCharacter() {
         pageSize = 20
         canGetMoreHeroes = false
@@ -48,6 +57,9 @@ class HeroesCollectionViewModel: NSObject {
         }
     }
     
+    /**
+     API Call to get heroes that has a coincidence with the text introduced in our search bar. The heroes ara retrived from the API and correctly parsed in a model, then are inserted inside an array and displayed on the screen.
+     **/
     func marvelCharacter(withName name: String) {
         searching = true
         
@@ -60,6 +72,14 @@ class HeroesCollectionViewModel: NSObject {
                 self.canReloadUI = true
             }
     }
+
+    /**
+        There are two arrays, one for storing heroes when the user is scrolling, and another array to save the search instroduced in our search bar.
+     **/
+    func heroAtIndexPath(indexPath: NSIndexPath) -> CharacterModel {
+        return (searchCharacters?.count > 0) ? searchCharacters![indexPath.row] : arrayCharacters![indexPath.row]
+    }
+    
     
     func numberOfItems() -> Int {
         if searching {

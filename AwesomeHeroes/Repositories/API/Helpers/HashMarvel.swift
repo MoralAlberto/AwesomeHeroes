@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+    Creates the hash. It is mandatory to user the maverl's API
+ **/
 struct HashMarvel {
     static func hash(timestamp: String, privateKey: String, publicKey: String) -> String {
         let semiHash = timestamp + privateKey + publicKey

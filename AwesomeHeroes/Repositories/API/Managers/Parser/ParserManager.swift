@@ -11,6 +11,10 @@ import ObjectMapper
 
 class ParserManager {
     
+    /**
+        This function is awesome, you can reuse a lot of code. You only have to specify the input Data and the class that you want to parse with this data.
+        There is inside a do{}catch{} because can fail the mapping.
+     **/
     static func parse<T: Mappable>(data: NSData, toClass: T.Type) -> T? {
         let parsedObject: AnyObject?
         do {
