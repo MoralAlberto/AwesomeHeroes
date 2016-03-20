@@ -27,7 +27,7 @@ class HeroesCollectionViewController: UICollectionViewController {
         layout.numberOfColumns = 2
         layout.cellPadding = 4
         
-        SVProgressHUD.show()
+        SVProgressHUD.showWithStatus(viewModel.searchingFeedback)
         
         binding()
         viewModel.marvelCharacter()
@@ -113,7 +113,7 @@ extension HeroesCollectionViewController {
         **/
         self.rac_signalForSelector("searchBar:textDidChange:", fromProtocol: UISearchBarDelegate.self)
             .doNext({ (AnyObject: AnyObject!) -> Void in
-                SVProgressHUD.show()
+                SVProgressHUD.showWithStatus(self.viewModel.searchingFeedback)
             })
             .throttle(1.0)
             .subscribeNext { (AnyObject: AnyObject!) -> Void in
@@ -163,7 +163,7 @@ extension HeroesCollectionViewController {
         if bottomEdge >= scrollView.contentSize.height
             && viewModel.canGetMoreHeroes
             && viewModel.searchCharacters?.count <= 0 {
-                SVProgressHUD.show()
+                SVProgressHUD.showWithStatus(viewModel.searchingFeedback)
                 viewModel.marvelCharacter()
         }
     }

@@ -29,6 +29,10 @@ class HeroesCollectionViewModel: NSObject {
         return NSLocalizedString("Heroes", comment: "Heroes")
     }
     
+    var searchingFeedback: String {
+        return NSLocalizedString("Searching more heroes! 😃", comment: "Searching more heroes! 😃")
+    }
+    
     /**
         API Call to get heroes. The heroes ara retrived from the API and correctly parsed in a model, then are inserted inside an array and displayed on the screen.
      **/
@@ -83,9 +87,9 @@ class HeroesCollectionViewModel: NSObject {
     
     func numberOfItems() -> Int {
         if searching {
-            return (self.searchCharacters?.count > 0) ? (self.searchCharacters?.count)! : 0
+            return (searchCharacters?.count > 0) ? (searchCharacters?.count)! : 0
         } else {
-            return (self.arrayCharacters?.count > 0) ? (self.arrayCharacters?.count)! : 0
+            return (arrayCharacters?.count > 0) ? (arrayCharacters?.count)! : 0
 
         }
     }
