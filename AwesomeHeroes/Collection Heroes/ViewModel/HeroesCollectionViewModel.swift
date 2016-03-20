@@ -43,7 +43,7 @@ class HeroesCollectionViewModel: NSObject {
         API.characters(pageSize, offset: offset)
             .throttle(3.0, onScheduler: QueueScheduler.mainQueueScheduler)
             .on { x in
-                print("")
+//                print("")
             }
             .startWithNext { characters in
         
@@ -69,7 +69,7 @@ class HeroesCollectionViewModel: NSObject {
         
         API.characters(withName: name)
             .on { x in
-                print("\(name)")
+//                print("\(name)")
             }
             .startWithNext { characters in
                 self.searchCharacters = characters.data?.results

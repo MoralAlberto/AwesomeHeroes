@@ -154,6 +154,10 @@ extension HeroesCollectionViewController {
         return cell
     }
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("Open View Controller")
+    }
+    
     /**
         Detect when the user has scrolled to the end of the UICollectionView. Then, when he arrives at the end another REST API call is sent.
      **/
