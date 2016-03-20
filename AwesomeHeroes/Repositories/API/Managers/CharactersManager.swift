@@ -14,8 +14,8 @@ class CharactersManager {
     
     //TODO: escape spaces. ie: Peter Parker crash app
     
-    static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharactersModel, NSError> {
-        return SignalProducer<CharactersModel, NSError> { (observer, _) in
+    static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharacterDataWrapper, NSError> {
+        return SignalProducer<CharacterDataWrapper, NSError> { (observer, _) in
             
             let publicKey = Marvel.publicKey.rawValue
             let privateKey = Marvel.privateKey.rawValue
@@ -30,14 +30,14 @@ class CharactersManager {
             
             NetworkManager.dataWithRequest(request)
                 .startWithNext({ data in
-                    let characters: CharactersModel = ParserManager.parse(data, toClass: CharactersModel.self)!
+                    let characters: CharacterDataWrapper = ParserManager.parse(data, toClass: CharacterDataWrapper.self)!
                     observer.sendNext(characters)
             })
         }
     }
     
-    static func character(withName name: String) -> SignalProducer<CharactersModel, NSError> {
-        return SignalProducer<CharactersModel, NSError> { (observer, _) in
+    static func character(withName name: String) -> SignalProducer<CharacterDataWrapper, NSError> {
+        return SignalProducer<CharacterDataWrapper, NSError> { (observer, _) in
             let publicKey = Marvel.publicKey.rawValue
             let privateKey = Marvel.privateKey.rawValue
             
@@ -51,7 +51,7 @@ class CharactersManager {
             
             NetworkManager.dataWithRequest(request)
                 .startWithNext({ data in
-                    let characters: CharactersModel = ParserManager.parse(data, toClass: CharactersModel.self)!
+                    let characters: CharacterDataWrapper = ParserManager.parse(data, toClass: CharacterDataWrapper.self)!
                     observer.sendNext(characters)
                 })
         }

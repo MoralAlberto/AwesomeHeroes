@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="1499" y="-56"/>
         </scene>
-        <!--View Controller-->
+        <!--Hero Detail View Controller-->
         <scene sceneID="Ekv-yW-g2g">
             <objects>
-                <viewController id="XNe-qS-Oc0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeroDetailViewController" id="XNe-qS-Oc0" customClass="HeroDetailViewController" customModule="AwesomeHeroes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lH1-Pz-2r1"/>
                         <viewControllerLayoutGuide type="bottom" id="Pch-dz-UhS"/>

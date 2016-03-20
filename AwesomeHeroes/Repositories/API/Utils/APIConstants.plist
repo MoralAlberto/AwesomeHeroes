@@ -10,6 +10,12 @@
 		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;limit=%@&amp;offset=%@</string>
 		<key>APIPathCharactersWithName</key>
 		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;nameStartsWith=%@&amp;limit=100</string>
+		<key>APIPathComicsCharacter</key>
+		<string>v1/public/characters/%@/comics</string>
+		<key>APIPathSeriesCharacter</key>
+		<string>v1/public/characters/%@/series</string>
+		<key>APIPathStoriesCharacter</key>
+		<string>v1/public/characters/%@/stories</string>
 	</dict>
 </dict>
 </plist>

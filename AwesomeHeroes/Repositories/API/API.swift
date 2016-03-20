@@ -14,14 +14,14 @@ class API {
     /**
         Search characters in alphabetical order
     **/
-    static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharactersModel, NSError> {
+    static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharacterDataWrapper, NSError> {
         return CharactersManager.characters(pageSize, offset: offset)
     }
     
     /**
         Search characters by name
     **/
-    static func characters(withName name: String) -> SignalProducer<CharactersModel, NSError> {
+    static func characters(withName name: String) -> SignalProducer<CharacterDataWrapper, NSError> {
         return CharactersManager.character(withName: name)
     }
 }

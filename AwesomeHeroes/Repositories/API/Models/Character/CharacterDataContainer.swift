@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class CharactersModelInfo: Mappable {
+class CharacterDataContainer: Mappable {
     var offset: Int?
     var limit: Int?
     var total: Int?

@@ -9,10 +9,10 @@
 import Foundation
 import ObjectMapper
 
-class CharactersModel: Mappable {
+class CharacterDataWrapper: Mappable {
     var code: Int?
     var status: String?
-    var data: CharactersModelInfo?
+    var data: CharacterDataContainer?
     
     required init?(_ map: Map){}
     

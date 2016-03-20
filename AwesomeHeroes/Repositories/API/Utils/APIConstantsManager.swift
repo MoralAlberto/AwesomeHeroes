@@ -15,6 +15,9 @@ enum APIPaths: String {
     case endPoint   = "APIEndPoint"
     case characters = "APIPaths.APIPathCharacters"
     case charactersWithName = "APIPaths.APIPathCharactersWithName"
+    case charactersComics = "APIPaths.APIPathComicsCharacter"
+    case charactersSeries = "APIPaths.APIPathSeriesCharacter"
+    case charactersStories = "APIPaths.APIPathStoriesCharacter"
 }
 
 /**
@@ -50,6 +53,18 @@ struct APIConstants {
     
     static func APIPathCharacterWithName() -> String! {
         return valueDict.valueForKeyPath(APIPaths.charactersWithName.rawValue) as! String
+    }
+    
+    static func APIPathCharacterComics() -> String! {
+        return valueDict.valueForKeyPath(APIPaths.charactersComics.rawValue) as! String
+    }
+    
+    static func APIPathCharacterSeries() -> String! {
+        return valueDict.valueForKeyPath(APIPaths.charactersSeries.rawValue) as! String
+    }
+    
+    static func APIPathCharacterStories() -> String! {
+        return valueDict.valueForKeyPath(APIPaths.charactersStories.rawValue) as! String
     }
     
 }

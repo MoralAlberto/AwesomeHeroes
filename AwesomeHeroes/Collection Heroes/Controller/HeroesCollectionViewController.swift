@@ -156,6 +156,11 @@ extension HeroesCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("Open View Controller")
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let heroDetailViewController = storyboard.instantiateViewControllerWithIdentifier("HeroDetailViewController") as! HeroDetailViewController
+        heroDetailViewController.hero = viewModel.heroAtIndexPath(indexPath)
+        self.presentViewController(heroDetailViewController, animated: true, completion: nil)
     }
     
     /**
