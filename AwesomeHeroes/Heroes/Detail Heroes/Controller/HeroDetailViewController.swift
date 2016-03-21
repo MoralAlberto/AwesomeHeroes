@@ -12,7 +12,7 @@ import SVProgressHUD
 class HeroDetailViewController: UITableViewController {
 
     var viewModel = HeroDetailViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

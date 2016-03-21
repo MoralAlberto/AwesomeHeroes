@@ -22,7 +22,6 @@ class ParserManager {
             let result = Mapper<T>().map(parsedObject)
             return result
         } catch {
-            print("Error \(error)")
             return nil
         }
     }
