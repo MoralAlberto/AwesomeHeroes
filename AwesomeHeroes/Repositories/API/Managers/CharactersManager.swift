@@ -11,14 +11,12 @@ import ReactiveCocoa
 
 
 class CharactersManager {
-    
-    //TODO: escape spaces. ie: Peter Parker crash app
-    
+        
     static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharacterDataWrapper, NSError> {
         return SignalProducer<CharacterDataWrapper, NSError> { (observer, _) in
             
             let (publicKey, timestamp, hash) = APIConstants.mandatoryParameters()
-
+            
             let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacters(), "\(timestamp)", publicKey, hash, pageSize.description, offset.description)
 
             let url = NSURL(string: "\(urlString)")
@@ -44,9 +42,9 @@ class CharactersManager {
             
             let (publicKey, timestamp, hash) = APIConstants.mandatoryParameters()
             
-            let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacterWithName(), "\(timestamp)", publicKey, hash, name)
+            let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacterWithName(), "\(timestamp)", publicKey, hash, name).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
             
-            let url = NSURL(string: "\(urlString)")
+            let url = NSURL(string: urlString!)
             let request = NSMutableURLRequest(URL: url!)
             
             NetworkManager.dataWithRequest(request)
