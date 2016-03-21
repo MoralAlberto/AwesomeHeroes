@@ -43,7 +43,7 @@ class HeroesTestsCollectionView: XCTestCase {
         
         heroesCollectionViewModel.marvelCharacter()
         
-        waitForExpectationsWithTimeout(3) { error in
+        waitForExpectationsWithTimeout(10) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
@@ -65,7 +65,7 @@ class HeroesTestsCollectionView: XCTestCase {
         
         heroesCollectionViewModel.marvelCharacter()
         
-        waitForExpectationsWithTimeout(3) { error in
+        waitForExpectationsWithTimeout(10) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }

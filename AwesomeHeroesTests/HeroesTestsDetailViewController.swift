@@ -14,10 +14,39 @@ import Quick
 
 
 class HeroesTestDetailViewController: QuickSpec {
-//    var heroDetailViewController = HeroDetailViewController()
-//    var heroDetailViewModel = HeroDetailViewModel()
+
     override func spec() {
+
+        let heroDetailViewModel = HeroDetailViewModel()
         
+        //1011334
+        describe("Load info") {
+            describe("stories from hero") {
+                beforeEach {
+                    heroDetailViewModel.stories(withId: 1011334)
+                }
+                
+                context("with id: 1011334") {
+                    it("Should have more than 0 stories") {
+                        expect { heroDetailViewModel.stories?.count }.toEventually(beGreaterThan(0), timeout: 10)
+                    }
+                }
+                
+            }
+            
+            describe("comics from hero") {
+                beforeEach {
+                    heroDetailViewModel.characterComics(withId: 1011334)
+                }
+                
+                context("with id: 1011334") {
+                    it("Should have more than 0 comics") {
+                        expect { heroDetailViewModel.comics?.count }.toEventually(beGreaterThan(0), timeout: 10)
+                    }
+                }
+                
+            }
+        }
     }
     
     

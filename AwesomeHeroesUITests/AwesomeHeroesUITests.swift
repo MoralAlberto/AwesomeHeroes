@@ -7,9 +7,9 @@
 //
 
 import XCTest
-//import Nimble
-//import Quick
-import ReactiveCocoa
+import Nimble
+import Quick
+//import ReactiveCocoa
 
 class AwesomeHeroesUITests: XCTestCase {
         
@@ -34,11 +34,6 @@ class AwesomeHeroesUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        
-        
-        
-        
-    }
+    func testExample() {}
     
 }
