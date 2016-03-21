@@ -32,11 +32,13 @@
 		39122F8F1CA012520098D174 /* StoriesDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39122F8C1CA012520098D174 /* StoriesDataWrapper.swift */; };
 		39122F901CA012520098D174 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39122F8D1CA012520098D174 /* StoryModel.swift */; };
 		39122F921CA012D20098D174 /* StoriesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39122F911CA012D20098D174 /* StoriesManager.swift */; };
+		39122F931CA01EF10098D174 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A82E41C9D596A000E95FB /* ReactiveCocoa.framework */; };
+		39122F941CA01EF10098D174 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A82E51C9D596A000E95FB /* Result.framework */; };
 		391A82A61C9D5109000E95FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A82A51C9D5109000E95FB /* AppDelegate.swift */; };
 		391A82AB1C9D5109000E95FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 391A82A91C9D5109000E95FB /* Main.storyboard */; };
 		391A82AD1C9D5109000E95FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 391A82AC1C9D5109000E95FB /* Assets.xcassets */; };
 		391A82B01C9D5109000E95FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 391A82AE1C9D5109000E95FB /* LaunchScreen.storyboard */; };
-		391A82BB1C9D5109000E95FB /* HeroesCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A82BA1C9D5109000E95FB /* HeroesCollectionViewModel.swift */; };
+		391A82BB1C9D5109000E95FB /* HeroesTestsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A82BA1C9D5109000E95FB /* HeroesTestsCollectionView.swift */; };
 		391A82C61C9D5109000E95FB /* AwesomeHeroesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A82C51C9D5109000E95FB /* AwesomeHeroesUITests.swift */; };
 		391A82DD1C9D531D000E95FB /* HeroesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A82DC1C9D531D000E95FB /* HeroesCollectionViewController.swift */; };
 		391A82DF1C9D5408000E95FB /* APIConstantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A82DE1C9D5408000E95FB /* APIConstantsManager.swift */; };
@@ -58,6 +60,7 @@
 		391A831B1C9DC191000E95FB /* HeroCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A831A1C9DC191000E95FB /* HeroCellViewModel.swift */; };
 		391A83201C9DFF58000E95FB /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A82E41C9D596A000E95FB /* ReactiveCocoa.framework */; };
 		391A83211C9DFF58000E95FB /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A82E51C9D596A000E95FB /* Result.framework */; };
+		394CB9691CA020700024D865 /* HeroesTestsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CB9681CA020700024D865 /* HeroesTestsDetailViewController.swift */; };
 		395C92E11C9EA0E9005BD5BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 395C92E31C9EA0E9005BD5BE /* Localizable.strings */; };
 		5F63A2CCF3CA4876D3E0345F /* Pods_AwesomeHeroesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97789EB1373324B7EBD6C038 /* Pods_AwesomeHeroesTests.framework */; };
 		93C6D8CFAE5F9CFD86749922 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A79693523EE18631DDA75 /* Pods.framework */; };
@@ -115,7 +118,7 @@
 		391A82AF1C9D5109000E95FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		391A82B11C9D5109000E95FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		391A82B61C9D5109000E95FB /* AwesomeHeroesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeHeroesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		391A82BA1C9D5109000E95FB /* HeroesCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesCollectionViewModel.swift; sourceTree = "<group>"; };
+		391A82BA1C9D5109000E95FB /* HeroesTestsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTestsCollectionView.swift; sourceTree = "<group>"; };
 		391A82BC1C9D5109000E95FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		391A82C11C9D5109000E95FB /* AwesomeHeroesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeHeroesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		391A82C51C9D5109000E95FB /* AwesomeHeroesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeHeroesUITests.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		391A83131C9D7A4F000E95FB /* HeroesLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesLayout.swift; sourceTree = "<group>"; };
 		391A83181C9DBF26000E95FB /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		391A831A1C9DC191000E95FB /* HeroCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCellViewModel.swift; sourceTree = "<group>"; };
+		394CB9681CA020700024D865 /* HeroesTestsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesTestsDetailViewController.swift; sourceTree = "<group>"; };
 		395C92E21C9EA0E9005BD5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		395C92E41C9EA11A005BD5BE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		395C92E51C9EA1B8005BD5BE /* AwesomeHeroes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeHeroes-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39122F931CA01EF10098D174 /* ReactiveCocoa.framework in Frameworks */,
+				39122F941CA01EF10098D174 /* Result.framework in Frameworks */,
 				D8522AAE4BF569D962210888 /* Pods_AwesomeHeroesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +324,8 @@
 		391A82B91C9D5109000E95FB /* AwesomeHeroesTests */ = {
 			isa = PBXGroup;
 			children = (
-				391A82BA1C9D5109000E95FB /* HeroesCollectionViewModel.swift */,
+				391A82BA1C9D5109000E95FB /* HeroesTestsCollectionView.swift */,
+				394CB9681CA020700024D865 /* HeroesTestsDetailViewController.swift */,
 				391A82BC1C9D5109000E95FB /* Info.plist */,
 			);
 			path = AwesomeHeroesTests;
@@ -876,7 +883,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				391A82BB1C9D5109000E95FB /* HeroesCollectionViewModel.swift in Sources */,
+				394CB9691CA020700024D865 /* HeroesTestsDetailViewController.swift in Sources */,
+				391A82BB1C9D5109000E95FB /* HeroesTestsCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,6 +1098,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F91E18D7A601F29C5FD403EA /* Pods-AwesomeHeroesUITests.debug.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AwesomeHeroesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.AwesomeHeroesUITests;
@@ -1103,6 +1115,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8F548C0F4988690E50FFE94 /* Pods-AwesomeHeroesUITests.release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AwesomeHeroesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.AwesomeHeroesUITests;

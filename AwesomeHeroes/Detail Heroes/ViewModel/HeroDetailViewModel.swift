@@ -15,6 +15,10 @@ class HeroDetailViewModel: NSObject {
     var stories: [StoryModel]?
     var selectedSegment: Int = 0
     
+    var loadingDataFeedback: String {
+        return NSLocalizedString("Loading Data", comment: "Loading Data")
+    }
+    
     dynamic var canReloadUI: Bool = false
     
     func characterComics(withId characterId: UInt) {

@@ -21,9 +21,8 @@ class HeroDetailViewController: UITableViewController {
         
         binding()
         
-        SVProgressHUD.showWithStatus("Loading data")
+        SVProgressHUD.showWithStatus(viewModel.loadingDataFeedback)
         viewModel.characterComics(withId: viewModel.hero!.id!)
-    
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -64,7 +63,7 @@ extension HeroDetailViewController {
             
             return headerCell
         } else {
-            infoCell = tableView.dequeueReusableCellWithIdentifier("HeroDetailCell", forIndexPath: indexPath) as! HeroDetailCell
+            infoCell = tableView.dequeueReusableCellWithIdentifier(HeroDetailCell.cellId, forIndexPath: indexPath) as! HeroDetailCell
             
             if viewModel.selectedSegment == 0 {
                 infoCell.viewModel.configureComicWith(viewModel.comics![indexPath.row-1])

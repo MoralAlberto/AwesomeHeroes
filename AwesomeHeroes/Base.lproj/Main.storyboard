@@ -97,10 +97,10 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="286"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fir-9I-6sJ" id="jss-XI-DRW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="285.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="286"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GA5-nU-mg3">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA5-nU-mg3">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="286" id="TUr-5O-BPa"/>
@@ -173,6 +173,7 @@
                                         <constraint firstItem="GA5-nU-mg3" firstAttribute="top" secondItem="jss-XI-DRW" secondAttribute="top" id="GkJ-3t-oDl"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iUR-jP-rd8" secondAttribute="bottom" constant="210" id="PS8-VH-zBx"/>
                                         <constraint firstAttribute="trailing" secondItem="GA5-nU-mg3" secondAttribute="trailing" id="Qxn-Sv-As2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="GA5-nU-mg3" secondAttribute="bottom" constant="21.5" id="Tzn-9h-brN"/>
                                         <constraint firstItem="iUR-jP-rd8" firstAttribute="top" secondItem="jss-XI-DRW" secondAttribute="top" constant="38" id="Vp3-Nq-8ad"/>
                                         <constraint firstAttribute="bottom" secondItem="stC-xP-LLb" secondAttribute="bottom" id="bXT-gP-qtG"/>
                                         <constraint firstAttribute="trailing" secondItem="stC-xP-LLb" secondAttribute="trailing" id="gp0-eP-zcF"/>

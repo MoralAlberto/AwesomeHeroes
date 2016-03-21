@@ -8,11 +8,9 @@
 
 import XCTest
 @testable import AwesomeHeroes
-import Nimble
-import Quick
 import ReactiveCocoa
 
-class AwesomeHeroesTests: XCTestCase {
+class HeroesTestsCollectionView: XCTestCase {
     
     var heroesCollectionViewController = HeroesCollectionViewController()
     var heroesCollectionViewModel = HeroesCollectionViewModel()

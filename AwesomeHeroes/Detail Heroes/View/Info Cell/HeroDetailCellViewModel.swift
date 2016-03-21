@@ -31,7 +31,7 @@ class HeroDetailCellViewModel: NSObject {
             urlImage = thumbnail.path! + "/portrait_medium.jpg"
         } 
         
-        comicDescription = (story.description?.characters.count > 0) ? story.description : "No information about this story."
+        comicDescription = (story.description?.characters.count > 0) ? story.description : NSLocalizedString("No information about this story.", comment: "No information about this story.")
         name = story.title
     
         canReloadUI = true
