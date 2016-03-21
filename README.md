@@ -2,7 +2,7 @@
 
 
 ##DEMO
-![DemoVideo](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demo/demovideo.gif)
+![DemoVideo](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demo/demoVideo.gif)
 
 ##Introduction
 The app uses:<br><br>
@@ -50,7 +50,7 @@ The best part of this method are Generics. We can parse any class with this meth
 ```
 
 ##Code Coverage
-![codeCoverage](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demo/codeCoverage)
+![codeCoverage](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demoImage/codeCoverage.png)
 
 ##Requirements
 - iOS 8.0+
