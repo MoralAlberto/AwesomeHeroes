@@ -15,6 +15,7 @@ class HeroDetailViewModel: NSObject {
     var stories: [StoryModel]?
     var selectedSegment: Int = 0
     
+    //MARK: Computed properties
     var loadingDataFeedback: String {
         return NSLocalizedString("Loading Data", comment: "Loading Data")
     }
@@ -23,9 +24,11 @@ class HeroDetailViewModel: NSObject {
         return NSLocalizedString("Sorry, 0 results", comment: "Sorry, 0 results")
     }
     
-
     dynamic var canReloadUI: Bool = false
     
+    /**
+        API call to search the hero's comics.
+     **/
     func characterComics(withId characterId: UInt) {
         API.comicsCharacter(withId: characterId).startWithNext { [unowned self] comics in
             self.comics = comics.data?.results
@@ -34,6 +37,9 @@ class HeroDetailViewModel: NSObject {
         }
     }
     
+    /**
+        API call to search the hero's stories.
+     **/
     func stories(withId characterId: UInt) {
         API.storiesCharacter(withId: characterId).startWithNext { [unowned self] stories in
             self.comics = nil
@@ -42,6 +48,9 @@ class HeroDetailViewModel: NSObject {
         }
     }
     
+    /**
+        Depending on the segmented controller options, we call one REST API or another.
+     **/
     func createRequestWithOption(option: Int) {
         selectedSegment = option
         if option == 0 {
@@ -50,6 +59,7 @@ class HeroDetailViewModel: NSObject {
             self.stories(withId: (hero?.id)!)
         }
     }
+    
     
     func numberOfItems() -> Int {
         if selectedSegment == 0 {

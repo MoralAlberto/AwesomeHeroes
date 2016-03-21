@@ -19,9 +19,8 @@ class HeroDetailViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        binding()
-        
         SVProgressHUD.showWithStatus(viewModel.loadingDataFeedback)
+        binding()
         viewModel.characterComics(withId: viewModel.hero!.id!)
     }
     
@@ -31,6 +30,9 @@ class HeroDetailViewController: UITableViewController {
         SVProgressHUD.dismiss()
     }
     
+    /**
+        Bind the Controller with the View Model
+     **/
     func binding() {
         RACObserve(viewModel, "canReloadUI")
         .ignore(false)
@@ -40,33 +42,40 @@ class HeroDetailViewController: UITableViewController {
             self.tableView.reloadData()
             
             if self.viewModel.numberOfItems() == 1 {
-                let labelZeroResults = UILabel(frame: self.tableView.frame)
-                labelZeroResults.text = self.viewModel.noResultsFeedback
-                labelZeroResults.textAlignment = NSTextAlignment.Center
-                self.tableView.addSubview(labelZeroResults)
-                
-                NSLayoutConstraint.activateConstraints([
-                    labelZeroResults.leadingAnchor.constraintEqualToAnchor(self.tableView.leadingAnchor),
-                    labelZeroResults.trailingAnchor.constraintEqualToAnchor(self.tableView.trailingAnchor),
-                    labelZeroResults.bottomAnchor.constraintEqualToAnchor(self.tableView.bottomAnchor),
-                    labelZeroResults.topAnchor.constraintEqualToAnchor(self.tableView.topAnchor),
-                    labelZeroResults.centerYAnchor.constraintEqualToAnchor(self.tableView.centerYAnchor)
-                ])
+                self.addLabelNoResults()
             }
         }
     }
+    
+    /**
+        If there aren't any results, we add a label to display a feedback message.
+     **/
+    func addLabelNoResults() {
+        let labelZeroResults = UILabel(frame: self.tableView.frame)
+        labelZeroResults.text = self.viewModel.noResultsFeedback
+        labelZeroResults.textAlignment = NSTextAlignment.Center
+        self.tableView.addSubview(labelZeroResults)
+        
+        NSLayoutConstraint.activateConstraints([
+            labelZeroResults.leadingAnchor.constraintEqualToAnchor(self.tableView.leadingAnchor),
+            labelZeroResults.trailingAnchor.constraintEqualToAnchor(self.tableView.trailingAnchor),
+            labelZeroResults.bottomAnchor.constraintEqualToAnchor(self.tableView.bottomAnchor),
+            labelZeroResults.topAnchor.constraintEqualToAnchor(self.tableView.topAnchor),
+            labelZeroResults.centerYAnchor.constraintEqualToAnchor(self.tableView.centerYAnchor)
+            ])
+    }
 }
 
+//MARK: TableView Delegates
 extension HeroDetailViewController {
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
     }
     
+    /**
+        Display the correct info, depending on: the first cell we will show the hero basic info, and within the other cells we are gonna show the comics or stories information.
+     **/
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var headerCell: HeaderCell
         var infoCell: HeroDetailCell
@@ -92,7 +101,11 @@ extension HeroDetailViewController {
     }
 }
 
+//MARK: Delegates Methods from HeaderCell
 extension HeroDetailViewController: HeaderCellDelegate {
+    /**
+        If the user taps the left top corner button, we'll dismiss the current view controller
+     **/
     func dismissViewController() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

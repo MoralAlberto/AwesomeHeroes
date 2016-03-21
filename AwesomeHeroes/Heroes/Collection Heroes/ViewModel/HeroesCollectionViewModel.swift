@@ -41,23 +41,25 @@ class HeroesCollectionViewModel: NSObject {
         canGetMoreHeroes = false
         
         API.characters(pageSize, offset: offset)
-            .throttle(3.0, onScheduler: QueueScheduler.mainQueueScheduler)
+            .throttle(2.0, onScheduler: QueueScheduler.mainQueueScheduler)
             .on { x in
 //                print("")
             }
             .startWithNext { [unowned self] characters in
-        
-            if ((self.arrayCharacters?.isEmpty) != nil) {
-                for hero in (characters.data?.results)! {
-                    self.arrayCharacters?.append(hero)
+                
+                if let charactersAPI = characters.data?.results {
+                    if ((self.arrayCharacters?.isEmpty) != nil) {
+                        for hero in charactersAPI {
+                            self.arrayCharacters?.append(hero)
+                        }
+                    } else {
+                        self.arrayCharacters = charactersAPI
+                    }
+                    
+                    self.offset = self.offset + self.pageSize
+                    self.canReloadUI = true
+                    self.canGetMoreHeroes = true
                 }
-            } else {
-                self.arrayCharacters = characters.data?.results
-            }
-
-            self.offset = self.offset + self.pageSize
-            self.canReloadUI = true
-            self.canGetMoreHeroes = true
         }
     }
     

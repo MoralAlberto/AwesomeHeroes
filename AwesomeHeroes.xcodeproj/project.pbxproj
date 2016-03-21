@@ -105,7 +105,7 @@
 		39122F8C1CA012520098D174 /* StoriesDataWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesDataWrapper.swift; sourceTree = "<group>"; };
 		39122F8D1CA012520098D174 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		39122F911CA012D20098D174 /* StoriesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesManager.swift; sourceTree = "<group>"; };
-		391A82A21C9D5109000E95FB /* AwesomeHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		391A82A21C9D5109000E95FB /* Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		391A82A51C9D5109000E95FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		391A82AA1C9D5109000E95FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		391A82AC1C9D5109000E95FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -271,7 +271,7 @@
 		391A82A31C9D5109000E95FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				391A82A21C9D5109000E95FB /* AwesomeHeroes.app */,
+				391A82A21C9D5109000E95FB /* Heroes.app */,
 				391A82B61C9D5109000E95FB /* AwesomeHeroesTests.xctest */,
 				391A82C11C9D5109000E95FB /* AwesomeHeroesUITests.xctest */,
 			);
@@ -446,9 +446,9 @@
 			isa = PBXGroup;
 			children = (
 				396943681CA04C95009E9AC5 /* Controller */,
+				3969436F1CA04C95009E9AC5 /* ViewModel */,
 				3969436A1CA04C95009E9AC5 /* Layout */,
 				3969436C1CA04C95009E9AC5 /* View */,
-				3969436F1CA04C95009E9AC5 /* ViewModel */,
 			);
 			path = "Collection Heroes";
 			sourceTree = "<group>";
@@ -588,7 +588,7 @@
 			);
 			name = AwesomeHeroes;
 			productName = AwesomeHeroes;
-			productReference = 391A82A21C9D5109000E95FB /* AwesomeHeroes.app */;
+			productReference = 391A82A21C9D5109000E95FB /* Heroes.app */;
 			productType = "com.apple.product-type.application";
 		};
 		391A82B51C9D5109000E95FB /* AwesomeHeroesTests */ = {
@@ -1050,7 +1050,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AwesomeHeroes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.AwesomeHeroes;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Heroes;
 				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeHeroes/Supporting Files/AwesomeHeroes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1069,7 +1069,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AwesomeHeroes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.AwesomeHeroes;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Heroes;
 				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeHeroes/Supporting Files/AwesomeHeroes-Bridging-Header.h";
 			};
 			name = Release;

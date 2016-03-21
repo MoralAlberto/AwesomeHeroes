@@ -9,11 +9,13 @@
 import UIKit
 import Haneke
 
+//MARK: Protocol
 protocol HeaderCellDelegate: class {
     func dismissViewController()
     func didPressSegmentedControllerWithOption(option: Int)
 }
 
+//MARK: View
 class HeaderCell: UITableViewCell {
     
     var viewModel = HeaderCellViewModel()

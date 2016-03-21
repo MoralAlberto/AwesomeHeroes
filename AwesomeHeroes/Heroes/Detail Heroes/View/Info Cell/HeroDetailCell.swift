@@ -19,10 +19,8 @@ class HeroDetailCell: UITableViewCell {
         return "HeroDetailCell"
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         binding()
     }
     

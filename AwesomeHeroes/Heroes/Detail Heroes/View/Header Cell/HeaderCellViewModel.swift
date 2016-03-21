@@ -17,6 +17,9 @@ class HeaderCellViewModel: NSObject {
     
     dynamic var canReloadUI: Bool = false
     
+    /**
+        Load a image in landscape. Fits better in the imageView :)
+     **/
     func configureHeaderWith(hero: CharacterModel) {
         urlImage = (hero.thumbnail?.path)!+"/landscape_xlarge.jpg"
         name = hero.name

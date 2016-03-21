@@ -21,5 +21,4 @@ class HeroCellViewModel: NSObject {
         
         canReloadUI = true
     }
-    
 }

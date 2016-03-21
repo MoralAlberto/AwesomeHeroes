@@ -20,6 +20,8 @@ class NetworkManager {
             .retry(2)
             .map { data, URLResponse in
                 return data
+//                let serverError = NSError(domain: "awesomeHeroes.serverError", code: 1, userInfo: nil)
+//                return SignalProducer.
             }
             .flatMapError { error in
                 print("Network error ocurred \(error)")

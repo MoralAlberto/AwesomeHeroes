@@ -18,6 +18,9 @@ class HeroDetailCellViewModel: NSObject {
     
     dynamic var canReloadUI: Bool = false
     
+    /**
+        To avoid creating two kind of cells, we reuse the same cell with comics and stories. So, we have two info initialization in our cell.
+     **/
     func configureComicWith(comic: ComicModel) {
         urlImage = (comic.thumbnail?.path)!+"/portrait_medium.jpg"
         name = comic.title

@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+    Designable button to add properties directly on inspector.
+ **/
 @IBDesignable
 class CustomBackButton: UIButton {
     @IBInspectable var cornerRadius: CGFloat {
