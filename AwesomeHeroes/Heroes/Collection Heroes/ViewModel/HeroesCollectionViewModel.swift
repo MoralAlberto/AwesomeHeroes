@@ -45,7 +45,7 @@ class HeroesCollectionViewModel: NSObject {
             .on { x in
 //                print("")
             }
-            .startWithNext { characters in
+            .startWithNext { [unowned self] characters in
         
             if ((self.arrayCharacters?.isEmpty) != nil) {
                 for hero in (characters.data?.results)! {
@@ -71,7 +71,7 @@ class HeroesCollectionViewModel: NSObject {
             .on { x in
                 print("\(name)")
             }
-            .startWithNext { characters in
+            .startWithNext { [unowned self] characters in
                 self.searchCharacters = characters.data?.results
                 self.canReloadUI = true
             }

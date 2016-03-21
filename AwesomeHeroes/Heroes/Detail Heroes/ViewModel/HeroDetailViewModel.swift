@@ -20,14 +20,14 @@ class HeroDetailViewModel: NSObject {
     }
     
     var noResultsFeedback: String {
-        return NSLocalizedString("0 results", comment: "0 results")
+        return NSLocalizedString("Sorry, 0 results", comment: "Sorry, 0 results")
     }
     
 
     dynamic var canReloadUI: Bool = false
     
     func characterComics(withId characterId: UInt) {
-        API.comicsCharacter(withId: characterId).startWithNext { comics in
+        API.comicsCharacter(withId: characterId).startWithNext { [unowned self] comics in
             self.comics = comics.data?.results
             self.stories = nil
             self.canReloadUI = true
@@ -35,7 +35,7 @@ class HeroDetailViewModel: NSObject {
     }
     
     func stories(withId characterId: UInt) {
-        API.storiesCharacter(withId: characterId).startWithNext { stories in
+        API.storiesCharacter(withId: characterId).startWithNext { [unowned self] stories in
             self.comics = nil
             self.stories = stories.data?.results
             self.canReloadUI = true

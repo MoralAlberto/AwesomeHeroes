@@ -31,7 +31,7 @@ class HeroDetailCell: UITableViewCell {
     func binding() {
         RACObserve(viewModel, "canReloadUI")
             .ignore(false)
-            .subscribeNext { (anyObject: AnyObject!) -> Void in
+            .subscribeNext { [unowned self] (anyObject: AnyObject!) -> Void in
                 
                 self.nameComic.text = self.viewModel.name
                 self.descriptionComic.text = self.viewModel.comicDescription
@@ -47,7 +47,6 @@ class HeroDetailCell: UITableViewCell {
                 } else {
                     self.imageComic.image = UIImage(imageLiteral: "NoImage")
                 }
-
         }
     }
     

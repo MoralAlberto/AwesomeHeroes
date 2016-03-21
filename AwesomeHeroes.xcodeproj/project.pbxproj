@@ -62,6 +62,7 @@
 		3969438B1CA04C95009E9AC5 /* HeroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3969437C1CA04C95009E9AC5 /* HeroDetailViewModel.swift */; };
 		3969438C1CA04C95009E9AC5 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3969437E1CA04C95009E9AC5 /* CustomBackButton.swift */; };
 		3969438D1CA04C95009E9AC5 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396943801CA04C95009E9AC5 /* RAC.swift */; };
+		396943901CA04FFC009E9AC5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3969438F1CA04FFC009E9AC5 /* Info.plist */; };
 		5F63A2CCF3CA4876D3E0345F /* Pods_AwesomeHeroesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97789EB1373324B7EBD6C038 /* Pods_AwesomeHeroesTests.framework */; };
 		93C6D8CFAE5F9CFD86749922 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A79693523EE18631DDA75 /* Pods.framework */; };
 		D8522AAE4BF569D962210888 /* Pods_AwesomeHeroesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DA2C33F1BCF82BEE02D0B5 /* Pods_AwesomeHeroesUITests.framework */; };
@@ -109,7 +110,6 @@
 		391A82AA1C9D5109000E95FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		391A82AC1C9D5109000E95FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		391A82AF1C9D5109000E95FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		391A82B11C9D5109000E95FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		391A82B61C9D5109000E95FB /* AwesomeHeroesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeHeroesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		391A82BA1C9D5109000E95FB /* HeroesTestsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTestsCollectionView.swift; sourceTree = "<group>"; };
 		391A82BC1C9D5109000E95FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 		394CB96B1CA025230024D865 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
 		395C92E21C9EA0E9005BD5BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		395C92E41C9EA11A005BD5BE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		395C92E51C9EA1B8005BD5BE /* AwesomeHeroes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeHeroes-Bridging-Header.h"; sourceTree = "<group>"; };
 		396943691CA04C95009E9AC5 /* HeroesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesCollectionViewController.swift; sourceTree = "<group>"; };
 		3969436B1CA04C95009E9AC5 /* HeroesLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesLayout.swift; sourceTree = "<group>"; };
 		3969436D1CA04C95009E9AC5 /* HeroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
@@ -147,6 +146,8 @@
 		3969437C1CA04C95009E9AC5 /* HeroDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailViewModel.swift; sourceTree = "<group>"; };
 		3969437E1CA04C95009E9AC5 /* CustomBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		396943801CA04C95009E9AC5 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
+		3969438E1CA04FF4009E9AC5 /* AwesomeHeroes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeHeroes-Bridging-Header.h"; sourceTree = "<group>"; };
+		3969438F1CA04FFC009E9AC5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C0358DCE8DCFE48E858FBE3 /* Pods-AwesomeHeroesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeHeroesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AwesomeHeroesTests/Pods-AwesomeHeroesTests.release.xcconfig"; sourceTree = "<group>"; };
 		97789EB1373324B7EBD6C038 /* Pods_AwesomeHeroesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwesomeHeroesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F548C0F4988690E50FFE94 /* Pods-AwesomeHeroesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeHeroesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AwesomeHeroesUITests/Pods-AwesomeHeroesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -287,8 +288,6 @@
 				391A82A91C9D5109000E95FB /* Main.storyboard */,
 				391A82AC1C9D5109000E95FB /* Assets.xcassets */,
 				391A82AE1C9D5109000E95FB /* LaunchScreen.storyboard */,
-				391A82B11C9D5109000E95FB /* Info.plist */,
-				395C92E51C9EA1B8005BD5BE /* AwesomeHeroes-Bridging-Header.h */,
 				395C92DD1C9EA0D2005BD5BE /* Supporting Files */,
 			);
 			path = AwesomeHeroes;
@@ -425,6 +424,8 @@
 		395C92DD1C9EA0D2005BD5BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3969438F1CA04FFC009E9AC5 /* Info.plist */,
+				3969438E1CA04FF4009E9AC5 /* AwesomeHeroes-Bridging-Header.h */,
 				395C92E31C9EA0E9005BD5BE /* Localizable.strings */,
 			);
 			path = "Supporting Files";
@@ -489,8 +490,8 @@
 			isa = PBXGroup;
 			children = (
 				396943721CA04C95009E9AC5 /* Controller */,
-				396943741CA04C95009E9AC5 /* View */,
 				3969437B1CA04C95009E9AC5 /* ViewModel */,
+				396943741CA04C95009E9AC5 /* View */,
 			);
 			path = "Detail Heroes";
 			sourceTree = "<group>";
@@ -682,6 +683,7 @@
 			files = (
 				395C92E11C9EA0E9005BD5BE /* Localizable.strings in Resources */,
 				391A82B01C9D5109000E95FB /* LaunchScreen.storyboard in Resources */,
+				396943901CA04FFC009E9AC5 /* Info.plist in Resources */,
 				391A82AD1C9D5109000E95FB /* Assets.xcassets in Resources */,
 				391A82AB1C9D5109000E95FB /* Main.storyboard in Resources */,
 				391A82E11C9D5436000E95FB /* APIConstants.plist in Resources */,
@@ -1045,11 +1047,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AwesomeHeroes/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AwesomeHeroes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.AwesomeHeroes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeHeroes/AwesomeHeroes-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeHeroes/Supporting Files/AwesomeHeroes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1064,11 +1066,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = AwesomeHeroes/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AwesomeHeroes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.AwesomeHeroes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeHeroes/AwesomeHeroes-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AwesomeHeroes/Supporting Files/AwesomeHeroes-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -114,7 +114,7 @@ extension HeroesCollectionViewController {
         RACObserve(viewModel, "canReloadUI")
             .ignore(false)
             .deliverOnMainThread()
-            .subscribeNext { (anyObject: AnyObject!) -> Void in
+            .subscribeNext {  [unowned self] (anyObject: AnyObject!) -> Void in
                 
                 SVProgressHUD.dismiss()
                 
@@ -131,7 +131,7 @@ extension HeroesCollectionViewController {
                 SVProgressHUD.showWithStatus(self.viewModel.searchingFeedback)
             })
             .throttle(2.0)
-            .subscribeNext { (AnyObject: AnyObject!) -> Void in
+            .subscribeNext { [unowned self] (AnyObject: AnyObject!) -> Void in
                 
                 let searchBar = AnyObject as? RACTuple
                 let searchText = searchBar?.second as? String

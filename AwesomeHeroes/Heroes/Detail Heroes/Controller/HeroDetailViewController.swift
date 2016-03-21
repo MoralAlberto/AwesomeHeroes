@@ -35,7 +35,7 @@ class HeroDetailViewController: UITableViewController {
         RACObserve(viewModel, "canReloadUI")
         .ignore(false)
         .deliverOnMainThread()
-        .subscribeNext { (anyObject: AnyObject!) -> Void in
+        .subscribeNext { [unowned self] (anyObject: AnyObject!) -> Void in
             SVProgressHUD.dismiss()
             self.tableView.reloadData()
             

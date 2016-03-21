@@ -38,7 +38,7 @@ class HeaderCell: UITableViewCell {
     func binding() {
         RACObserve(viewModel, "canReloadUI")
             .ignore(false)
-            .subscribeNext { (anyObject: AnyObject!) -> Void in
+            .subscribeNext { [unowned self] (anyObject: AnyObject!) -> Void in
             
                 self.nameHero.text = self.viewModel.name
                 

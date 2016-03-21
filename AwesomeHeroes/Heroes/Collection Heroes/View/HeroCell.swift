@@ -28,7 +28,7 @@ class HeroCell: UICollectionViewCell {
         RACObserve(viewModel, "canReloadUI")
             .ignore(false)
             .deliverOnMainThread()
-            .subscribeNext { (anyObject: AnyObject!) -> Void in
+            .subscribeNext { [unowned self] (anyObject: AnyObject!) -> Void in
                 
                 self.nameHero.text = self.viewModel.name
                 self.imageView.hnk_setImageFromURL(NSURL(string: self.viewModel.urlImage!), placeholder: nil, success: { image in
