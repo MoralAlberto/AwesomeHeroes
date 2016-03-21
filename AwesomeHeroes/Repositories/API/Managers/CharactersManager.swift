@@ -30,8 +30,13 @@ class CharactersManager {
             
             NetworkManager.dataWithRequest(request)
                 .startWithNext({ data in
-                    let characters: CharacterDataWrapper = ParserManager.parse(data, toClass: CharacterDataWrapper.self)!
-                    observer.sendNext(characters)
+                    if data != nil {
+                        let characters: CharacterDataWrapper = ParserManager.parse(data!, toClass: CharacterDataWrapper.self)!
+                        observer.sendNext(characters)
+                    } else {
+                        let error = NSError(domain: "errorServer", code: 1, userInfo: nil)
+                        observer.sendFailed(error)
+                    }
             })
         }
     }
@@ -51,8 +56,14 @@ class CharactersManager {
             
             NetworkManager.dataWithRequest(request)
                 .startWithNext({ data in
-                    let characters: CharacterDataWrapper = ParserManager.parse(data, toClass: CharacterDataWrapper.self)!
-                    observer.sendNext(characters)
+                    if data != nil {
+                        let characters: CharacterDataWrapper = ParserManager.parse(data!, toClass: CharacterDataWrapper.self)!
+                        observer.sendNext(characters)
+                    } else {
+                        print("Something wrong happened.")
+                        let error = NSError(domain: "errorServer", code: 1, userInfo: nil)
+                        observer.sendFailed(error)
+                    }
                 })
         }
     }

@@ -115,11 +115,16 @@ extension HeroesCollectionViewController {
             .ignore(false)
             .deliverOnMainThread()
             .subscribeNext {  [unowned self] (anyObject: AnyObject!) -> Void in
-                
                 SVProgressHUD.dismiss()
-                
                 self.reload()
                 self.viewModel.searching = false
+            }
+        
+        RACObserve(viewModel, "serverError")
+            .ignore(false)
+            .deliverOnMainThread()
+            .subscribeNext {  (anyObject: AnyObject!) -> Void in
+                SVProgressHUD.showErrorWithStatus("Server error")
         }
         
         /**

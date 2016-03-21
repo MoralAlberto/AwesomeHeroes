@@ -26,7 +26,7 @@ class StoriesManager: NSObject {
             
             NetworkManager.dataWithRequest(request)
                 .startWithNext({ data in
-                    let stories: StoriesDataWrapper = ParserManager.parse(data, toClass: StoriesDataWrapper.self)!
+                    let stories: StoriesDataWrapper = ParserManager.parse(data!, toClass: StoriesDataWrapper.self)!
                     observer.sendNext(stories)
                 })
         }

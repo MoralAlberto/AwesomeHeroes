@@ -24,6 +24,7 @@ class HeroesCollectionViewModel: NSObject {
     var canGetMoreHeroes: Bool = true
     
     dynamic var canReloadUI: Bool = false
+    dynamic var serverError: Bool = false
     
     var titleHeroes: String {
         return NSLocalizedString("Heroes", comment: "Heroes")
@@ -31,6 +32,10 @@ class HeroesCollectionViewModel: NSObject {
     
     var searchingFeedback: String {
         return NSLocalizedString("Searching more heroes! 😃", comment: "Searching more heroes! 😃")
+    }
+    
+    var serverErrorFeedBack: String {
+        return NSLocalizedString("Server Error", comment: "Server Error")
     }
     
     /**
@@ -42,9 +47,10 @@ class HeroesCollectionViewModel: NSObject {
         
         API.characters(pageSize, offset: offset)
             .throttle(2.0, onScheduler: QueueScheduler.mainQueueScheduler)
-            .on { x in
-//                print("")
-            }
+            .on(failed: { error in
+                self.serverError = true
+                self.canGetMoreHeroes = true
+            })
             .startWithNext { [unowned self] characters in
                 
                 if let charactersAPI = characters.data?.results {
@@ -70,9 +76,9 @@ class HeroesCollectionViewModel: NSObject {
         searching = true
         
         API.characters(withName: name)
-            .on { x in
-                print("\(name)")
-            }
+            .on(failed: { error in
+                self.serverError = true
+            })
             .startWithNext { [unowned self] characters in
                 self.searchCharacters = characters.data?.results
                 self.canReloadUI = true

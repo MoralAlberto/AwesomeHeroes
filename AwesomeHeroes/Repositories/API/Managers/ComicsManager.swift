@@ -25,7 +25,7 @@ class ComicsManager: NSObject {
             
             NetworkManager.dataWithRequest(request)
                 .startWithNext({ data in
-                    let characters: ComicDataWrapper = ParserManager.parse(data, toClass: ComicDataWrapper.self)!
+                    let characters: ComicDataWrapper = ParserManager.parse(data!, toClass: ComicDataWrapper.self)!
                     observer.sendNext(characters)
                 })
         }
