@@ -8,13 +8,64 @@
 
 import UIKit
 
-class HeroDetailViewController: UIViewController {
+class HeroDetailViewController: UITableViewController {
 
-    var hero: CharacterModel?
+    var viewModel = HeroDetailViewModel()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(hero)
+        self.tableView.estimatedRowHeight = 200
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        binding()
+        viewModel.characterComics(withId: viewModel.hero!.id!)
+    
+    }
+    
+    func binding() {
+        RACObserve(viewModel, "canReloadUI")
+        .ignore(false)
+        .deliverOnMainThread()
+        .subscribeNext { (anyObject: AnyObject!) -> Void in
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension HeroDetailViewController {
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfItems()
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var headerCell: HeaderCell
+        var infoCell: HeroDetailCell
+        
+        if (indexPath.row < 1) {
+            headerCell = tableView.dequeueReusableCellWithIdentifier(HeaderCell.cellId, forIndexPath: indexPath) as! HeaderCell
+            headerCell.delegate = self
+            headerCell.viewModel.configureHeaderWith(viewModel.hero!)
+            
+            return headerCell
+        } else {
+            infoCell = tableView.dequeueReusableCellWithIdentifier("HeroDetailCell", forIndexPath: indexPath) as! HeroDetailCell
+            infoCell.viewModel.configureComicWith(viewModel.comics![indexPath.row-1])
+            return infoCell
+        }
+        
+    }
+}
+
+extension HeroDetailViewController: HeaderCellDelegate {
+    func dismissViewController() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

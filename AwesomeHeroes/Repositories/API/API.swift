@@ -24,4 +24,11 @@ class API {
     static func characters(withName name: String) -> SignalProducer<CharacterDataWrapper, NSError> {
         return CharactersManager.character(withName: name)
     }
+    
+    /** 
+    
+    **/
+    static func comicsCharacter(withId characterId: UInt) -> SignalProducer<ComicDataWrapper, NSError> {
+        return ComicsManager.comicsCharacter(withId: characterId)
+    }
 }

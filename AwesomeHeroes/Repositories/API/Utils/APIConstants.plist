@@ -11,11 +11,11 @@
 		<key>APIPathCharactersWithName</key>
 		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;nameStartsWith=%@&amp;limit=100</string>
 		<key>APIPathComicsCharacter</key>
-		<string>v1/public/characters/%@/comics</string>
+		<string>v1/public/characters/%@/comics?ts=%@&amp;apikey=%@&amp;hash=%@</string>
 		<key>APIPathSeriesCharacter</key>
-		<string>v1/public/characters/%@/series</string>
+		<string>v1/public/characters/%@/series?ts=%@&amp;apikey=%@&amp;hash=%@</string>
 		<key>APIPathStoriesCharacter</key>
-		<string>v1/public/characters/%@/stories</string>
+		<string>v1/public/characters/%@/stories?ts=%@&amp;apikey=%@&amp;hash=%@</string>
 	</dict>
 </dict>
 </plist>

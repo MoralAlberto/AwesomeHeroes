@@ -69,7 +69,7 @@ class HeroesCollectionViewModel: NSObject {
         
         API.characters(withName: name)
             .on { x in
-//                print("\(name)")
+                print("\(name)")
             }
             .startWithNext { characters in
                 self.searchCharacters = characters.data?.results

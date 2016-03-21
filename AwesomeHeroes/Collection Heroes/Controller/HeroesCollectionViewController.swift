@@ -14,6 +14,12 @@ import SVProgressHUD
 class HeroesCollectionViewController: UICollectionViewController {
 
     var viewModel = HeroesCollectionViewModel()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +121,7 @@ extension HeroesCollectionViewController {
             .doNext({ (AnyObject: AnyObject!) -> Void in
                 SVProgressHUD.showWithStatus(self.viewModel.searchingFeedback)
             })
-            .throttle(1.0)
+            .throttle(2.0)
             .subscribeNext { (AnyObject: AnyObject!) -> Void in
                 
                 let searchBar = AnyObject as? RACTuple
@@ -159,7 +165,7 @@ extension HeroesCollectionViewController {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let heroDetailViewController = storyboard.instantiateViewControllerWithIdentifier("HeroDetailViewController") as! HeroDetailViewController
-        heroDetailViewController.hero = viewModel.heroAtIndexPath(indexPath)
+        heroDetailViewController.viewModel.hero = viewModel.heroAtIndexPath(indexPath)
         self.presentViewController(heroDetailViewController, animated: true, completion: nil)
     }
     

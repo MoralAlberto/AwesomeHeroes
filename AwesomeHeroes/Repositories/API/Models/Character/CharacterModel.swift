@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class CharacterModel: Mappable {
-    var id: Int?
+    var id: UInt?
     var name: String?
     var thumbnail: CharactersThumbnailModel?
     var comics: ComicsModel?
