@@ -4,6 +4,14 @@
 ##DEMO
 ![DemoVideo](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demoImages/demoVideo.gif)
 
+##Installation
+
+Run the following command in the root directory of your project
+
+```bash
+$ carthage update
+```
+
 ##Introduction
 The app uses:<br><br>
  · **MVVM** pattern<br>
