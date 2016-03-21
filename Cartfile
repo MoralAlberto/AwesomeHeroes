@@ -1,0 +1,4 @@
+github "ReactiveCocoa/ReactiveCocoa"
+github "Hearst-DD/ObjectMapper" 
+github "Quick/Nimble"
+github "Quick/Quick"

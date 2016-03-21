@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APIEndPoint</key>
+	<string>http://gateway.marvel.com:80/</string>
+	<key>APIPaths</key>
+	<dict>
+		<key>APIPathCharacters</key>
+		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;limit=%@&amp;offset=%@</string>
+		<key>APIPathCharactersWithName</key>
+		<string>v1/public/characters?ts=%@&amp;apikey=%@&amp;hash=%@&amp;nameStartsWith=%@&amp;limit=100</string>
+		<key>APIPathComicsCharacter</key>
+		<string>v1/public/characters/%@/comics?ts=%@&amp;apikey=%@&amp;hash=%@</string>
+		<key>APIPathSeriesCharacter</key>
+		<string>v1/public/characters/%@/series?ts=%@&amp;apikey=%@&amp;hash=%@</string>
+		<key>APIPathStoriesCharacter</key>
+		<string>v1/public/characters/%@/stories?ts=%@&amp;apikey=%@&amp;hash=%@</string>
+	</dict>
+</dict>
+</plist>
