@@ -49,7 +49,7 @@ class HeaderCell: UITableViewCell {
                     self.imageHero.image = image
                     
                     }) { error in
-                        print("Error")
+//                        print("Error")
                 }
         }
     }

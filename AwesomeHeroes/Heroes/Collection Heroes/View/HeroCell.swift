@@ -36,7 +36,7 @@ class HeroCell: UICollectionViewCell {
                     self.imageView.image = image
                     
                     }) { error in
-                        print("Error")
+//                        print("Error")
                 }
         }
     }
