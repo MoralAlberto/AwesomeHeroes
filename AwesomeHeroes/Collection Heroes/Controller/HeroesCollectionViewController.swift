@@ -15,10 +15,18 @@ class HeroesCollectionViewController: UICollectionViewController {
 
     var viewModel = HeroesCollectionViewModel()
     
+    // MARK: View Controller Lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        SVProgressHUD.dismiss()
     }
 
     override func viewDidLoad() {
@@ -39,6 +47,7 @@ class HeroesCollectionViewController: UICollectionViewController {
         viewModel.marvelCharacter()
     }
     
+    //MARK: Private methods
     /**
         Create a custom titleView in our navigation controller. With a parent UIView, with subview: UILabel and UISearchBar
         It's all attached with manual layout. With NSLayoutAnchor, a fluent API for NSLayoutConstraint.

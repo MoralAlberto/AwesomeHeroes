@@ -10,6 +10,8 @@ import Foundation
 
 class HeroDetailCellViewModel: NSObject {
     var comic: ComicModel?
+    var story: StoriesModel?
+    
     var urlImage: String?
     var name: String?
     var comicDescription: String?
@@ -21,6 +23,17 @@ class HeroDetailCellViewModel: NSObject {
         name = comic.title
         comicDescription = comic.description
         
+        canReloadUI = true
+    }
+    
+    func configureStoryWith(story: StoryModel) {
+        if let thumbnail = story.thumbnail {
+            urlImage = thumbnail.path! + "/portrait_medium.jpg"
+        } 
+        
+        comicDescription = (story.description?.characters.count > 0) ? story.description : "No information about this story."
+        name = story.title
+    
         canReloadUI = true
     }
 }

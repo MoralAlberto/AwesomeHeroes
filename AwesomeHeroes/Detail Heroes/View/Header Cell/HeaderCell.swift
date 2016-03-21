@@ -11,6 +11,7 @@ import Haneke
 
 protocol HeaderCellDelegate: class {
     func dismissViewController()
+    func didPressSegmentedControllerWithOption(option: Int)
 }
 
 class HeaderCell: UITableViewCell {
@@ -18,19 +19,17 @@ class HeaderCell: UITableViewCell {
     var viewModel = HeaderCellViewModel()
     var delegate: HeaderCellDelegate?
     
-//    @IBOutlet weak var imageHero: UIImageView!
-//    @IBOutlet weak var nameHero: UILabel!
     @IBOutlet weak var nameHero: UILabel!
     @IBOutlet weak var imageHero: UIImageView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+
     static var cellId: String {
         return "HeaderCell"
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //delegate = self
-        
+
         binding()
     }
 
@@ -56,8 +55,11 @@ class HeaderCell: UITableViewCell {
     //MARK: Actions
     
     @IBAction func dismissViewController(sender: UIButton) {
-        print("back button")
         delegate?.dismissViewController()
+    }
+    
+    @IBAction func segmentedControl(sender: UISegmentedControl) {
+        delegate?.didPressSegmentedControllerWithOption(segmentedControl.selectedSegmentIndex)
     }
 
 }

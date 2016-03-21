@@ -11,6 +11,8 @@ import ReactiveCocoa
 
 class API {
     
+    //MARK: Heroes
+    
     /**
         Search characters in alphabetical order
     **/
@@ -25,10 +27,22 @@ class API {
         return CharactersManager.character(withName: name)
     }
     
-    /** 
+    //MARK: Comics
     
+    /** 
+        Get comics from one hero
     **/
     static func comicsCharacter(withId characterId: UInt) -> SignalProducer<ComicDataWrapper, NSError> {
         return ComicsManager.comicsCharacter(withId: characterId)
     }
+    
+    //MARK: Stories
+    
+    /**
+        Get stories from one hero
+    **/
+    static func storiesCharacter(withId characterId: UInt) -> SignalProducer<StoriesDataWrapper, NSError> {
+        return StoriesManager.storiesCharacter(withId: characterId)
+    }
+    
 }

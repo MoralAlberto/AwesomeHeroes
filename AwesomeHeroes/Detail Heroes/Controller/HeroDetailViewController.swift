@@ -7,13 +7,12 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HeroDetailViewController: UITableViewController {
 
     var viewModel = HeroDetailViewModel()
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,8 +20,16 @@ class HeroDetailViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         binding()
+        
+        SVProgressHUD.showWithStatus("Loading data")
         viewModel.characterComics(withId: viewModel.hero!.id!)
     
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        SVProgressHUD.dismiss()
     }
     
     func binding() {
@@ -30,6 +37,7 @@ class HeroDetailViewController: UITableViewController {
         .ignore(false)
         .deliverOnMainThread()
         .subscribeNext { (anyObject: AnyObject!) -> Void in
+            SVProgressHUD.dismiss()
             self.tableView.reloadData()
         }
     }
@@ -57,7 +65,13 @@ extension HeroDetailViewController {
             return headerCell
         } else {
             infoCell = tableView.dequeueReusableCellWithIdentifier("HeroDetailCell", forIndexPath: indexPath) as! HeroDetailCell
-            infoCell.viewModel.configureComicWith(viewModel.comics![indexPath.row-1])
+            
+            if viewModel.selectedSegment == 0 {
+                infoCell.viewModel.configureComicWith(viewModel.comics![indexPath.row-1])
+            } else {
+                infoCell.viewModel.configureStoryWith(viewModel.stories![indexPath.row-1])
+            }
+
             return infoCell
         }
         
@@ -67,5 +81,10 @@ extension HeroDetailViewController {
 extension HeroDetailViewController: HeaderCellDelegate {
     func dismissViewController() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func didPressSegmentedControllerWithOption(option: Int) {
+        SVProgressHUD.showWithStatus("Loading data")
+        viewModel.createRequestWithOption(option)
     }
 }

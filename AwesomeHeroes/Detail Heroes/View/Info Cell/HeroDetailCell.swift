@@ -36,13 +36,18 @@ class HeroDetailCell: UITableViewCell {
                 self.nameComic.text = self.viewModel.name
                 self.descriptionComic.text = self.viewModel.comicDescription
                 
-                self.imageComic.hnk_setImageFromURL(NSURL(string: self.viewModel.urlImage!), placeholder: nil, success: { image in
-                    self.imageComic.clipsToBounds = true
-                    self.imageComic.image = image
-                    
-                    }) { error in
-                        print("Error")
+                if let urlImage = self.viewModel.urlImage {
+                    self.imageComic.hnk_setImageFromURL(NSURL(string: urlImage), placeholder: nil, success: { image in
+                        self.imageComic.clipsToBounds = true
+                        self.imageComic.image = image
+                        
+                        }) { error in
+                            self.imageComic.image = UIImage(imageLiteral: "NoImage")
+                    }
+                } else {
+                    self.imageComic.image = UIImage(imageLiteral: "NoImage")
                 }
+
         }
     }
     
