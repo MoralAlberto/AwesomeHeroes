@@ -10,6 +10,9 @@ import XCTest
 @testable import AwesomeHeroes
 import ReactiveCocoa
 
+/**
+    Mini example about TDD
+ **/
 class HeroesTestsCollectionView: XCTestCase {
     
     var heroesCollectionViewController = HeroesCollectionViewController()

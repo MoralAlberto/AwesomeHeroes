@@ -12,26 +12,26 @@ import ReactiveCocoa
 import Nimble
 import Quick
 
-
+/**
+    Mini example about BDD
+ **/
 class HeroesTestDetailViewController: QuickSpec {
 
     override func spec() {
 
         let heroDetailViewModel = HeroDetailViewModel()
         
-        //1011334
+        //Hero id: 1011334
         describe("Load info") {
             describe("stories from hero") {
                 beforeEach {
                     heroDetailViewModel.stories(withId: 1011334)
                 }
-                
                 context("with id: 1011334") {
                     it("Should have more than 0 stories") {
                         expect { heroDetailViewModel.stories?.count }.toEventually(beGreaterThan(0), timeout: 10)
                     }
                 }
-                
             }
             
             describe("comics from hero") {
@@ -48,6 +48,4 @@ class HeroesTestDetailViewController: QuickSpec {
             }
         }
     }
-    
-    
 }

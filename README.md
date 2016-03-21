@@ -19,6 +19,9 @@ The app uses:<br><br>
  · Separate code in different layers<br>
  · **Code coverage**<br>
 
+##RAC
+Used Reactive Cocoa, useful in method like:
+![rac](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demoImages/rac.png)
 
 ##REST API Architecture
 AwesomeHeroes has an API module that works with [Reactive Cocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper). The API repository architecture is split in different logic parts: the managers, the network stuff, and the parser model.
@@ -48,7 +51,18 @@ The best part of this method are Generics. We can parse any class with this meth
         }
     }
 ```
+###Utils
+Created a enum to store the publicKey and privateKey. In production is mandatory to protect this information with pods like [Cocoapods-Keys](https://github.com/orta/cocoapods-keys)
 
+Also, created an .plist to save all the API end points, with a quick look you can see all the end points used within AwesomeHeroes.
+
+![plist](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demoImages/plist.png)
+
+##Performance
+I used Profiler to observe [performance](https://yalantis.com/blog/mastering-uikit-performance/) in AwesomeHeroes, the app is close to 60fps like you can observe in the next image. But, I notice a issue to be fixed, if I tap multiple times on the segmented controller (stories or comics) and the hero doesn't have any result. I add multiple times a label to the table view background, it's a bug easy to fix.
+
+![performance](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demoImages/performance.png)
+ 
 ##Code Coverage
 ![codeCoverage](https://raw.githubusercontent.com/MoralAlberto/AwesomeHeroes/develop/demoImages/codeCoverage.png)
 

@@ -67,4 +67,14 @@ struct APIConstants {
         return valueDict.valueForKeyPath(APIPaths.charactersStories.rawValue) as! String
     }
     
+    static func mandatoryParameters() -> (String, String, String) {
+        let publicKey = Marvel.publicKey.rawValue
+        let privateKey = Marvel.privateKey.rawValue
+        
+        let timestamp = "\(NSDate().timeIntervalSince1970 * 1000)"
+        let hash = HashMarvel.hash(timestamp, privateKey: privateKey, publicKey: publicKey)
+        
+        return (publicKey, timestamp, hash)
+    }
+    
 }

@@ -12,11 +12,8 @@ import ReactiveCocoa
 class ComicsManager: NSObject {
     static func comicsCharacter(withId characterId: UInt) -> SignalProducer<ComicDataWrapper, NSError> {
         return SignalProducer<ComicDataWrapper, NSError> { (observer, _) in
-            let publicKey = Marvel.publicKey.rawValue
-            let privateKey = Marvel.privateKey.rawValue
-            
-            let timestamp = "\(NSDate().timeIntervalSince1970 * 1000)"
-            let hash = HashMarvel.hash(timestamp, privateKey: privateKey, publicKey: publicKey)
+
+            let (publicKey, timestamp, hash) = APIConstants.mandatoryParameters()
             
             let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacterComics(), characterId.description,"\(timestamp)", publicKey, hash)
             

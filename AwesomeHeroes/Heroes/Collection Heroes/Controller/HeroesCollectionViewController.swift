@@ -125,6 +125,8 @@ extension HeroesCollectionViewController {
             .deliverOnMainThread()
             .subscribeNext {  (anyObject: AnyObject!) -> Void in
                 SVProgressHUD.showErrorWithStatus("Server error")
+                self.reload()
+                self.viewModel.searching = false
         }
         
         /**
@@ -175,8 +177,6 @@ extension HeroesCollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Open View Controller")
-
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let heroDetailViewController = storyboard.instantiateViewControllerWithIdentifier("HeroDetailViewController") as! HeroDetailViewController
         heroDetailViewController.viewModel.hero = viewModel.heroAtIndexPath(indexPath)

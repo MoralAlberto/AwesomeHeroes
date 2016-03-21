@@ -24,6 +24,14 @@ class HeroDetailCell: UITableViewCell {
         binding()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageComic.image = nil
+        nameComic.text = nil
+        descriptionComic.text = nil
+    }
+    
     //MARK: Setup
     
     func binding() {

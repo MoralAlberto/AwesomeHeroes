@@ -54,6 +54,13 @@ class HeaderCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageHero.image = nil
+        nameHero.text = nil
+    }
+    
     //MARK: Actions
     
     @IBAction func dismissViewController(sender: UIButton) {
@@ -63,5 +70,4 @@ class HeaderCell: UITableViewCell {
     @IBAction func segmentedControl(sender: UISegmentedControl) {
         delegate?.didPressSegmentedControllerWithOption(segmentedControl.selectedSegmentIndex)
     }
-
 }

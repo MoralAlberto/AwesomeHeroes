@@ -17,11 +17,7 @@ class CharactersManager {
     static func characters(pageSize: UInt, offset: UInt) -> SignalProducer<CharacterDataWrapper, NSError> {
         return SignalProducer<CharacterDataWrapper, NSError> { (observer, _) in
             
-            let publicKey = Marvel.publicKey.rawValue
-            let privateKey = Marvel.privateKey.rawValue
-            
-            let timestamp = "\(NSDate().timeIntervalSince1970 * 1000)"
-            let hash = HashMarvel.hash(timestamp, privateKey: privateKey, publicKey: publicKey)
+            let (publicKey, timestamp, hash) = APIConstants.mandatoryParameters()
 
             let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacters(), "\(timestamp)", publicKey, hash, pageSize.description, offset.description)
 
@@ -41,13 +37,12 @@ class CharactersManager {
         }
     }
     
+
+    
     static func character(withName name: String) -> SignalProducer<CharacterDataWrapper, NSError> {
         return SignalProducer<CharacterDataWrapper, NSError> { (observer, _) in
-            let publicKey = Marvel.publicKey.rawValue
-            let privateKey = Marvel.privateKey.rawValue
             
-            let timestamp = "\(NSDate().timeIntervalSince1970 * 1000)"
-            let hash = HashMarvel.hash(timestamp, privateKey: privateKey, publicKey: publicKey)
+            let (publicKey, timestamp, hash) = APIConstants.mandatoryParameters()
             
             let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacterWithName(), "\(timestamp)", publicKey, hash, name)
             
@@ -60,7 +55,6 @@ class CharactersManager {
                         let characters: CharacterDataWrapper = ParserManager.parse(data!, toClass: CharacterDataWrapper.self)!
                         observer.sendNext(characters)
                     } else {
-                        print("Something wrong happened.")
                         let error = NSError(domain: "errorServer", code: 1, userInfo: nil)
                         observer.sendFailed(error)
                     }

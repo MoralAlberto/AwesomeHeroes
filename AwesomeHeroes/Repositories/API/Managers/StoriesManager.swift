@@ -13,11 +13,8 @@ class StoriesManager: NSObject {
     
     static func storiesCharacter(withId characterId: UInt) -> SignalProducer<StoriesDataWrapper, NSError> {
         return SignalProducer<StoriesDataWrapper, NSError> { (observer, _) in
-            let publicKey = Marvel.publicKey.rawValue
-            let privateKey = Marvel.privateKey.rawValue
-            
-            let timestamp = "\(NSDate().timeIntervalSince1970 * 1000)"
-            let hash = HashMarvel.hash(timestamp, privateKey: privateKey, publicKey: publicKey)
+
+            let (publicKey, timestamp, hash) = APIConstants.mandatoryParameters()
             
             let urlString = String(format: APIConstants.APIEndPoint()+APIConstants.APIPathCharacterStories(), characterId.description,"\(timestamp)", publicKey, hash)
             
