@@ -1,4 +1,4 @@
 github "ReactiveCocoa/ReactiveCocoa"
-github "Hearst-DD/ObjectMapper" 
+github "Hearst-DD/ObjectMapper" == 1.1.5
 github "Quick/Nimble"
 github "Quick/Quick"

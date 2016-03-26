@@ -8,3 +8,13 @@
 
 
 "Heroes" = "Héroes";
+
+"Searching..." = "Buscando...";
+"Searching hero" = "Buscando héroe...";
+"Searching more heroes! 😃" = "Buscando más héroes! 😃";
+
+"Loading data" = "Cargando datos";
+"No information about this story." = "No hay información disponible";
+
+"Sorry, 0 results" = "Lo sentimos, 0 resultados";
+"Server Error" = "Error del servidor";
