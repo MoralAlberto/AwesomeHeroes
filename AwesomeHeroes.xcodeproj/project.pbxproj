@@ -62,7 +62,6 @@
 		3969438B1CA04C95009E9AC5 /* HeroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3969437C1CA04C95009E9AC5 /* HeroDetailViewModel.swift */; };
 		3969438C1CA04C95009E9AC5 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3969437E1CA04C95009E9AC5 /* CustomBackButton.swift */; };
 		3969438D1CA04C95009E9AC5 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396943801CA04C95009E9AC5 /* RAC.swift */; };
-		396943901CA04FFC009E9AC5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3969438F1CA04FFC009E9AC5 /* Info.plist */; };
 		5F63A2CCF3CA4876D3E0345F /* Pods_AwesomeHeroesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97789EB1373324B7EBD6C038 /* Pods_AwesomeHeroesTests.framework */; };
 		93C6D8CFAE5F9CFD86749922 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A79693523EE18631DDA75 /* Pods.framework */; };
 		D8522AAE4BF569D962210888 /* Pods_AwesomeHeroesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DA2C33F1BCF82BEE02D0B5 /* Pods_AwesomeHeroesUITests.framework */; };
@@ -639,7 +638,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Alberto Moral";
 				TargetAttributes = {
 					391A82A11C9D5109000E95FB = {
@@ -683,7 +682,6 @@
 			files = (
 				395C92E11C9EA0E9005BD5BE /* Localizable.strings in Resources */,
 				391A82B01C9D5109000E95FB /* LaunchScreen.storyboard in Resources */,
-				396943901CA04FFC009E9AC5 /* Info.plist in Resources */,
 				391A82AD1C9D5109000E95FB /* Assets.xcassets in Resources */,
 				391A82AB1C9D5109000E95FB /* Main.storyboard in Resources */,
 				391A82E11C9D5436000E95FB /* APIConstants.plist in Resources */,

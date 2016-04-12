@@ -17,10 +17,10 @@
     expectFailureMessage(@"expected to not be falsy, got <nil>", ^{
         expect(nil).toNot(beFalsy());
     });
-    expectFailureMessage(@"expected to be falsy, got <1>", ^{
+    expectFailureMessage(@"expected to be falsy, got <1.0000>", ^{
         expect(@1).to(beFalsy());
     });
-    expectFailureMessage(@"expected to be truthy, got <0>", ^{
+    expectFailureMessage(@"expected to be truthy, got <0.0000>", ^{
         expect(@NO).to(beTruthy());
     });
 }

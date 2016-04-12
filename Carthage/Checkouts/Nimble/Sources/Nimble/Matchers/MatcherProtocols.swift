@@ -2,7 +2,7 @@ import Foundation
 
 /// Implement this protocol to implement a custom matcher for Swift
 public protocol Matcher {
-    associatedtype ValueType
+    typealias ValueType
     func matches(actualExpression: Expression<ValueType>, failureMessage: FailureMessage) throws -> Bool
     func doesNotMatch(actualExpression: Expression<ValueType>, failureMessage: FailureMessage) throws -> Bool
 }
@@ -46,7 +46,6 @@ public protocol NMBCollection {
 #endif
 
 extension NSSet : NMBCollection {}
-extension NSIndexSet : NMBCollection {}
 extension NSDictionary : NMBCollection {}
 
 #if _runtime(_ObjC)
@@ -110,9 +109,24 @@ extension NSDate: NMBDoubleConvertible {
 }
 #endif
 
-extension NSDate: TestOutputStringConvertible {
-    public var testDescription: String {
-        return dateFormatter.stringFromDate(self)
+
+extension NMBDoubleConvertible {
+    public var stringRepresentation: String {
+        get {
+            if let date = self as? NSDate {
+                return dateFormatter.stringFromDate(date)
+            }
+            
+            if let debugStringConvertible = self as? CustomDebugStringConvertible {
+                return debugStringConvertible.debugDescription
+            }
+            
+            if let stringConvertible = self as? CustomStringConvertible {
+                return stringConvertible.description
+            }
+            
+            return ""
+        }
     }
 }
 
