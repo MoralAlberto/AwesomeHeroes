@@ -33,13 +33,7 @@ class HeroesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         addSearchBarAndLeftTitleWithManualLayout()
-        
-        // Collection View Layout Settings
-        let layout = self.collectionViewLayout as! HeroesLayout
-        layout.delegate = self
-        //  Number of columns in our Layout.
-        layout.numberOfColumns = 2
-        layout.cellPadding = 4
+        configureCollectionViewLayout()
         
         SVProgressHUD.showWithStatus(viewModel.searchingFeedback)
         
@@ -48,6 +42,16 @@ class HeroesCollectionViewController: UICollectionViewController {
     }
     
     //MARK: Private methods
+
+    private func configureCollectionViewLayout() {
+        // Collection View Layout Settings
+        let layout = self.collectionViewLayout as! HeroesLayout
+        layout.delegate = self
+        //  Number of columns in our Layout.
+        layout.numberOfColumns = 2
+        layout.cellPadding = 4
+    }
+    
     /**
         Create a custom titleView in our navigation controller. With a parent UIView, with subview: UILabel and UISearchBar
         It's all attached with manual layout. With NSLayoutAnchor, a fluent API for NSLayoutConstraint.
@@ -216,5 +220,11 @@ extension HeroesCollectionViewController: HeroesLayoutDelegate {
     }
 }
 
-extension HeroesCollectionViewController: UISearchBarDelegate {}
+
+extension HeroesCollectionViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
 
